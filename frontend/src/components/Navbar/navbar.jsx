@@ -16,14 +16,14 @@ import Logo from '../../assets/Logo.png';
 const navbar = () => {
     return (
         <Flex bg='blue.700' pl='0' pr='10'>
-            <VStack>
-                <Box p='2'>
+            <VStack minH="982px">
+                <Box p='1'>
                     <Image src={Logo} alt='Logo' />
                 </Box>
-                <Box p='2'>
+                <Box p='1'>
                     <Link as={ReactLink} to='/'> <Image src={HomeIcon} alt='Home' /></Link>
                 </Box>
-                <Box p='2'>
+                <Box p='1'>
                     <Link as={ReactLink} to='/analytics'> <Image src={AnalyticsIcon} alt='Analytics' /> </Link>
                 </Box>
             </VStack>

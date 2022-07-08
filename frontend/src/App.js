@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   ChakraProvider, 
-  theme 
+  theme,
+  Flex 
 } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
@@ -12,14 +13,18 @@ import Analytics from './components/Analytics/analytics';
 function App() {
   return (
       <ChakraProvider theme={theme}>
-         <Router>
+        <Flex>
+          <Router>
               <Navbar/>
               <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/analytics" element={<Analytics />} />
               </Routes>
           </Router>
+          </Flex>
       </ChakraProvider>
+      
+         
 );
 }
 
