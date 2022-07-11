@@ -20,7 +20,7 @@ import Logo from '../../assets/Logo.png';
 
 const sidebar = () => {
     return (
-        <Flex bg='#0057A5' pl='1' pr='1'>"
+        <Flex bg='#0057A5' pl='1' pr='1'>
             <VStack overflow="hidden" w="100px">
                 <Box p='1' py='3'>
                     <Image src={Logo} alt='Logo' />
