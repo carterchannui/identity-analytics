@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Spacer, Center, Button, Text } from '@chakra-ui/react';
+import { Flex, Spacer, Center, Button, Text, Box } from '@chakra-ui/react';
 import Card from '../Card/card';
 import '../Analytics/analytics.css';
 
@@ -19,12 +19,11 @@ function collectData(event) {
         }
         ++actions;
     });
-    // console.log(passes_issued);
-    // console.log(passes_refreshed);
-    // console.log(actions);
-    localStorage.setItem('passes_issued', passes_issued);
-    localStorage.setItem('passes_refreshed', passes_refreshed);
-    localStorage.setItem('total_actions', actions);
+
+    // Store data locally.
+    sessionStorage.setItem('passes_issued', passes_issued);
+    sessionStorage.setItem('passes_refreshed', passes_refreshed);
+    sessionStorage.setItem('total_actions', actions);
 }
 
 function loadFile() {
@@ -62,25 +61,17 @@ const convert = (data, delimiter = ',') => {
     });
 };
 
-/*
- * Analytics Page Section 
- * Consisted of a topbar and a card
- */
-
-const analytics = () => {
+// Temporarily removed the Card component as it doesn't allow you to encapsulate other components.
+function Analytics() {
   return (
     <Flex direction='column' bg='#F8F8F8' h='auto' w='auto' color='white' >
         <Topbar/>
-        <Card/>
+        <Box bg='tomato'> { sessionStorage.getItem("passes_issued") } </Box>
     </Flex>
   )
 }
 
-/*
- * Topbar component
- */
-
-const Topbar = () => {
+function Topbar() {
   
     return (
       <Flex align="center">
@@ -102,4 +93,4 @@ const Topbar = () => {
      );
 }
 
-export default analytics
+export default Analytics
