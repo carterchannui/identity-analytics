@@ -20,18 +20,18 @@ import Logo from '../../assets/Logo.png';
 
 const sidebar = () => {
     return (
-        <Flex bg='#0057A5' pl='1' pr='1'>
+        <Flex bg='#0057A5' pr='2'>"
             <VStack overflow="hidden" w="100px">
-                <Box p='1' py='3'>
+                <Box pt='5'>
                     <Image src={Logo} alt='Logo' />
                 </Box>
-                <Box p='1'py='6'>
+                <Box py='6'>
                     <Link as={ReactLink} to='/'> <Image src={HomeIcon} alt='Home' /></Link>
                 </Box>
-                <Box p='1' py='6'>
+                <Box py='6'>
                     <Link as={ReactLink} to='/analytics'> <Image src={AnalyticsIcon} alt='Analytics' /> </Link>
                 </Box>
-                <Box p='1' py='6'>
+                <Box py='6'>
                     <Link as={ReactLink} to='/setting'> <Image src={SettingIcon} alt='Setting' /> </Link>
                 </Box>
             </VStack>
