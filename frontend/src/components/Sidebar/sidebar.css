@@ -4,4 +4,5 @@
     justify-content: center;
     /*opacity: 0.4;*/
     background: rgba(66, 153, 225, 0.6);
+    border-radius: 10px;
 }

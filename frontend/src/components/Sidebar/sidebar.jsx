@@ -22,7 +22,7 @@ const sidebar = () => {
     return (
         <Flex bg='#0057A5' pr='2'>"
             <VStack overflow="hidden" w="100px">
-                <Box pt='5' cursor={"pointer"} className={"sideIcon"}>
+                <Box pt='5' cursor={"pointer"}>
                     <Image src={Logo} alt='Logo' />
                 </Box>
                 <Box py='6' className={"sideIcon"}>
