@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
 import Card from '../Card/card';
 import '../Analytics/analytics.css';
+
 /*
  * Analytics Page Section 
  * Consisted of a topbar and a card
