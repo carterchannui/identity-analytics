@@ -1,7 +1,9 @@
 import React from 'react'
-import { Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
-import Card from '../Card/card';
+import { Box, Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
 import '../Analytics/analytics.css';
+import Chart from "../Chart/chart";
+import LabelCard from "./labelCard"
+import {ResponsiveContainer, LineChart, Line} from "recharts";
 
 /*
  * Analytics Page Section 
@@ -27,7 +29,23 @@ const analytics = () => {
                 <input type="file" id="input_file"/>
           </Center>
       </Flex>
-        <Card/>
+      <Flex w="100%">
+    <Box bg='#FFFFFF' h={{ base: '75vh', md: '75vh', lg: '85vh' }} w={{ base: '75vh', md: '130vh', lg: '180vh' }} color={"black"}  ml="32px" mr ="32px" mb="62px" boxShadow="0px 4px 20px rgba(133, 133, 133, 0.25)" borderRadius="10px">
+
+
+        <Box display={"flex"} justifyContent={"space-between"} ml="32px" mr ="32px" mt ="32px">
+            <LabelCard name={"Passes Issued"} data={"39,021"}/>
+            <LabelCard name={"Passes Refreshed"} data={"113,049"}/>
+            <LabelCard name={"Unique Interactions"} data={"1,542"}/>
+            <LabelCard name={"Active Passes"} data={"14,042"}/>
+        </Box>
+
+        <Box marginTop={"2rem"}>
+            <Chart/>
+
+        </Box>
+    </Box>
+    </Flex>
     </Flex>
   )
 }
@@ -57,6 +75,11 @@ function collectData(event) {
   localStorage.setItem('passes_issued', passes_issued);
   localStorage.setItem('passes_refreshed', passes_refreshed);
   localStorage.setItem('total_actions', actions);
+  
+   // Store data locally.
+   sessionStorage.setItem('passes_issued', passes_issued);
+   sessionStorage.setItem('passes_refreshed', passes_refreshed);
+   sessionStorage.setItem('total_actions', actions);
 }
 
 function loadFile() {
