@@ -11,19 +11,7 @@ import '../Analytics/analytics.css';
 const analytics = () => {
   return (
     <Flex direction='column' bg='#F8F8F8' h='auto' w='auto' color='white' >
-        <Topbar/>
-        <Card/>
-    </Flex>
-  )
-}
-
-/*
- * Topbar component
- */
-
-const Topbar = () => {
-  return (
-      <Flex align="center">
+        <Flex align="center">
           <Center>
                   <Text textColor="#0057A5" fontWeight="700" fontSize="35px" ml="32px" mt="38" mb="41">
                       Analytics
@@ -39,8 +27,13 @@ const Topbar = () => {
                 <input type="file" id="input_file"/>
           </Center>
       </Flex>
-  );
+        <Card/>
+    </Flex>
+  )
 }
+
+export default analytics
+
 
 function collectData(event) {
   // console.log(event.target.result);
@@ -58,9 +51,9 @@ function collectData(event) {
       }
       ++actions;
   });
-  // console.log(passes_issued);
-  // console.log(passes_refreshed);
-  // console.log(actions);
+   console.log(passes_issued);
+   console.log(passes_refreshed);
+   console.log(actions);
   localStorage.setItem('passes_issued', passes_issued);
   localStorage.setItem('passes_refreshed', passes_refreshed);
   localStorage.setItem('total_actions', actions);
@@ -100,5 +93,3 @@ return data
     );
   });
 };
-
-export default analytics

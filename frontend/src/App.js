@@ -3,9 +3,9 @@ import { ChakraProvider, theme, Flex } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar/sidebar';
-import Main from './components/Main/main';
+import Home from './components/Home/home';
 import Analytics from './components/Analytics/analytics';
-import Setting from './components/Setting/setting';
+import Settings from './components/Settings/settings';
 
 /*
  * Create Conatainer with a horizontal flex layout that has the Sidebar and the main section.
@@ -28,9 +28,9 @@ function App() {
           <Sidebar />
           <Flex>
             <Routes>
-              <Route path="/" element={<Main />} />
+              <Route path="/" element={<Home />} />
               <Route path="/analytics" element={<Analytics />} />
-              <Route path="/setting" element={<Setting />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </Flex>
         </Router>
