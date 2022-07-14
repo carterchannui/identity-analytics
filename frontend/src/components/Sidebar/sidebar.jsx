@@ -4,6 +4,8 @@ import {
     Box,
     Link,
     VStack,
+    Spacer,
+    Center,
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { Image } from '@chakra-ui/react';
@@ -20,8 +22,8 @@ import './sidebar.css';
 
 const sidebar = () => {
     return (
-        <Flex bg='#0057A5' pr='2'>"
-            <VStack overflow="hidden" w="100px">
+
+            <VStack overflow="hidden" w="100px" bg='#0057A5'>
                 <Box pt='5' cursor={"pointer"}>
                     <Image src={Logo} alt='Logo' />
                 </Box>
@@ -35,7 +37,6 @@ const sidebar = () => {
                     <Link as={ReactLink} to='/settings'> <Image src={SettingIcon} alt='Settings' /> </Link>
                 </Box>
             </VStack>
-        </Flex>
     );
 }
 

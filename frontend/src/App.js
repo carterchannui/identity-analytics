@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider, theme, Flex } from '@chakra-ui/react';
+import { ChakraProvider, theme, Flex, Spacer, Box } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar/sidebar';
@@ -23,18 +23,16 @@ import Settings from './components/Settings/settings';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Flex>
         <Router>
-          <Sidebar />
-          <Flex>
+            <Flex minH='100vh'>
+            <Sidebar/>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>
-          </Flex>
+            </Flex>
         </Router>
-      </Flex>
     </ChakraProvider>
   );
 }
