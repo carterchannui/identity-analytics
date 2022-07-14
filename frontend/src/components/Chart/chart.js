@@ -7,7 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import arrow from '../../assets/Arrow_drop_down_big.webp';
 
 const pdata = [
@@ -55,7 +55,9 @@ function Chart() {
       <Box display={'flex'} justifyContent={'space-between'} width={'80%'}>
         <Box ml={'3rem'}>
           <Heading size="md">Gateway Activity</Heading>
-          <img src={arrow} alt="" />
+          <Heading mt="10px" mb="10px" size="sm" textColor="#9FA2B4">
+            as of 4 July 2022, 09:41 PM
+          </Heading>
         </Box>
 
         <Box display={'flex'} gap={'20px'}>
@@ -82,6 +84,9 @@ function Chart() {
             </Box>
             <Box>
               <Text>Refreshment</Text>
+            </Box>
+            <Box>
+              <Image src={arrow} alt="" />
             </Box>
           </Box>
         </Box>

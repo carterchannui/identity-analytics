@@ -20,22 +20,20 @@ import './sidebar.css';
 
 const sidebar = () => {
     return (
-        <Flex bg='#0057A5' pr='2'>"
-            <VStack overflow="hidden" w="100px">
-                <Box pt='5' cursor={"pointer"}>
-                    <Image src={Logo} alt='Logo' />
-                </Box>
-                <Box py='6' className={"sideIcon"}>
-                    <Link as={ReactLink} to='/'> <Image src={HomeIcon} alt='Home' /></Link>
-                </Box>
-                <Box py='6' className={"sideIcon"}>
-                    <Link as={ReactLink} to='/analytics'> <Image src={AnalyticsIcon} alt='Analytics' /> </Link>
-                </Box>
-                <Box py='6' className={"sideIcon"}>
-                    <Link as={ReactLink} to='/settings'> <Image src={SettingIcon} alt='Settings' /> </Link>
-                </Box>
-            </VStack>
-        </Flex>
+        <VStack overflow="hidden" w="100px" bg='#0057A5'>
+        <Box pt='5' cursor={"pointer"}>
+            <Image src={Logo} alt='Logo' />
+        </Box>
+        <Box py='6' className={"sideIcon"}>
+            <Link as={ReactLink} to='/'> <Image src={HomeIcon} alt='Home' /></Link>
+        </Box>
+        <Box py='6' className={"sideIcon"}>
+            <Link as={ReactLink} to='/analytics'> <Image src={AnalyticsIcon} alt='Analytics' /> </Link>
+        </Box>
+        <Box py='6' className={"sideIcon"}>
+            <Link as={ReactLink} to='/settings'> <Image src={SettingIcon} alt='Settings' /> </Link>
+        </Box>
+    </VStack>
     );
 }
 

@@ -23,18 +23,16 @@ import Settings from './components/Settings/settings';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Flex>
-        <Router>
+      <Router>
+        <Flex minH="100vh">
           <Sidebar />
-          <Flex>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </Flex>
-        </Router>
-      </Flex>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </Flex>
+      </Router>
     </ChakraProvider>
   );
 }

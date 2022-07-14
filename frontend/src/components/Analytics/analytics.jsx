@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
+import { Box, Flex, Spacer, StatLabel, Stat,
+  StatNumber, Center, Button,
+  Text } from '@chakra-ui/react'
 import '../Analytics/analytics.css';
 import Chart from "../Chart/chart";
-import LabelCard from "./labelCard"
-import {ResponsiveContainer, LineChart, Line} from "recharts";
 
 /*
  * Analytics Page Section 
@@ -12,40 +12,58 @@ import {ResponsiveContainer, LineChart, Line} from "recharts";
 
 const analytics = () => {
   return (
-    <Flex direction='column' bg='#F8F8F8' h='auto' w='auto' color='white' >
-        <Flex align="center">
-          <Center>
-                  <Text textColor="#0057A5" fontWeight="700" fontSize="35px" ml="32px" mt="38" mb="41">
-                      Analytics
-                  </Text>
-          </Center>
-          <Spacer/> 
-          <Center>
+    <Flex h='100%' w="100%" direction="column" align="left" justify="center" background ="#F8F8F8">
+      <Center>
+        <Text textColor="#0057A5" fontSize="35px" fontWeight="bold" ml="38px" mt="41px">
+          Analytics
+        </Text>
+        <Spacer/>
+        <Box>
           <Button onClick={loadFile} id="get_file" colorScheme='blue' size='lg'>
                     <Text>
                         Upload CSV
                     </Text>
                 </Button>
                 <input type="file" id="input_file"/>
-          </Center>
+          </Box>
+      </Center>
+    <Flex bg='#FFFFFF'  borderRadius="10px" ml="32px" mt="32px" mr="32px">
+            <Box w='100%' boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);" >
+                <Flex>
+                    <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                        <Stat>
+                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
+                            <StatNumber fontWeight={"bold"}> 39,021 </StatNumber>
+                        </Stat>
+                    </Box>
+                    <Spacer/>
+                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                        <Stat>
+                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
+                            <StatNumber fontWeight={"bold"}> 113,049 </StatNumber>
+                        </Stat>
+                    </Box>
+                    <Spacer/>
+                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                        <Stat>
+                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
+                            <StatNumber fontWeight={"bold"}> 1,542 </StatNumber>
+                        </Stat>
+                    </Box>
+                    <Spacer/>
+                    <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                        <Stat>
+                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
+                            <StatNumber fontWeight={"bold"}> 14,042 </StatNumber>
+                        </Stat>
+                    </Box>
+                </Flex>
+                <Box p='8'>
+                    <Chart/>
+                </Box>
+            </Box>
       </Flex>
-      <Flex w="100%">
-    <Box bg='#FFFFFF' h={{ base: '75vh', md: '75vh', lg: '85vh' }} w={{ base: '75vh', md: '130vh', lg: '180vh' }} color={"black"}  ml="32px" mr ="32px" mb="62px" boxShadow="0px 4px 20px rgba(133, 133, 133, 0.25)" borderRadius="10px">
-
-
-        <Box display={"flex"} justifyContent={"space-between"} ml="32px" mr ="32px" mt ="32px">
-            <LabelCard name={"Passes Issued"} data={"39,021"}/>
-            <LabelCard name={"Passes Refreshed"} data={"113,049"}/>
-            <LabelCard name={"Unique Interactions"} data={"1,542"}/>
-            <LabelCard name={"Active Passes"} data={"14,042"}/>
-        </Box>
-
-        <Box marginTop={"2rem"}>
-            <Chart/>
-
-        </Box>
-    </Box>
-    </Flex>
+          
     </Flex>
   )
 }
@@ -83,6 +101,9 @@ function collectData(event) {
 }
 
 function loadFile() {
+  // do not use this 
+  // use useRef 
+  
   document.getElementById('input_file').click();
   const input = document.querySelector('input');
 
