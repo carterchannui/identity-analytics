@@ -33,28 +33,28 @@ const analytics = () => {
                     <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
-                            <StatNumber fontWeight={"bold"}> 39,021 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> 39,021 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
-                            <StatNumber fontWeight={"bold"}> 113,049 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> 113,049 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
-                            <StatNumber fontWeight={"bold"}> 1,542 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> 1,542 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
-                            <StatNumber fontWeight={"bold"}> 14,042 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> 14,042 </StatNumber>
                         </Stat>
                     </Box>
                 </Flex>
