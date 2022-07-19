@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Box, Flex, Spacer, StatLabel, Stat,
   StatNumber, Center, Button,
   Text } from '@chakra-ui/react'
@@ -10,56 +10,57 @@ import Chart from "../Chart/chart";
  * Consisted of a topbar and a card
  */
 
-const analytics = () => {
+function analytics () {
   return (
-    <Flex h='100%' w="100%" direction="column" align="left" justify="center" background ="#F8F8F8">
+    <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#DFE0EB">
       <Center>
         <Text textColor="#0057A5" fontSize="35px" fontWeight="bold" ml="38px" mt="41px">
           Analytics
         </Text>
         <Spacer/>
-        <Box>
+        <Box mt="40px" mr="30px">
           <Button onClick={loadFile} id="get_file" colorScheme='blue' size='lg'>
                     <Text>
-                        Upload CSV
+                        Import CSV
                     </Text>
                 </Button>
                 <input type="file" id="input_file"/>
           </Box>
       </Center>
     <Flex bg='#FFFFFF'  borderRadius="10px" ml="32px" mt="32px" mr="32px">
-            <Box w='100%' boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);" >
+            <Box w='100%' border="1px"  borderRadius="10px"boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" >
                 <Flex>
-                    <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                    <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
                             <StatNumber align="center" fontWeight={"bold"}> 39,021 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
                             <StatNumber align="center" fontWeight={"bold"}> 113,049 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
                             <StatNumber align="center" fontWeight={"bold"}> 1,542 </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
+                    <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
                             <StatNumber align="center" fontWeight={"bold"}> 14,042 </StatNumber>
                         </Stat>
                     </Box>
                 </Flex>
-                <Box p='8'>
+                <Box p={8} borderRadius="10px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" m={10}>
                     <Chart/>
+                    
                 </Box>
             </Box>
       </Flex>
@@ -101,9 +102,6 @@ function collectData(event) {
 }
 
 function loadFile() {
-  // do not use this 
-  // use useRef 
-  
   document.getElementById('input_file').click();
   const input = document.querySelector('input');
 

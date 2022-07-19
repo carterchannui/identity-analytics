@@ -7,7 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, Spacer } from '@chakra-ui/react';
 import arrow from '../../assets/Arrow_drop_down_big.webp';
 
 const pdata = [
@@ -50,16 +50,17 @@ const pdata = [
 ];
 
 function Chart() {
+  const date = new Date();
   return (
     <>
-      <Box display={'flex'} justifyContent={'space-between'} width={'80%'}>
+      <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
         <Box ml={'3rem'}>
           <Heading size="md">Gateway Activity</Heading>
           <Heading mt="10px" mb="10px" size="sm" textColor="#9FA2B4">
-            as of 4 July 2022, 09:41 PM
+            as of {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
           </Heading>
         </Box>
-
+        
         <Box display={'flex'} gap={'20px'}>
           <Box display={'flex'} gap={'5px'}>
             <Box>
@@ -67,7 +68,7 @@ function Chart() {
                 border={'2px solid blue'}
                 width="2rem"
                 display="inline-block"
-              ></Box>
+              />
             </Box>
             <Box>
               <Text>Issuance</Text>
@@ -85,6 +86,7 @@ function Chart() {
             <Box>
               <Text>Refreshment</Text>
             </Box>
+            <Spacer w="5vh" />
             <Box>
               <Image src={arrow} alt="" />
             </Box>
@@ -97,7 +99,7 @@ function Chart() {
           data={pdata}
           width={500}
           height={250}
-          margin={{ top: 5, right: 300, left: 20, bottom: 5 }}
+          margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
         >
           {/*<Line type="monotone" dataKey="data" stroke="blue" activeDot={{ r: 8 }} />*/}
           <Line
