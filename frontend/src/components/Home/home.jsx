@@ -8,7 +8,7 @@ import { Flex, Box, Center, Button, Text, Spacer,loadFile } from '@chakra-ui/rea
  * Consisted of a topbar and a card
  */
 
-const home = () => {
+function home() {
   return (
     <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#DFE0EB">
       <Center>

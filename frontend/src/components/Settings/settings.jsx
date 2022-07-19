@@ -4,7 +4,7 @@ import { Flex, Center, Box, Text, Spacer } from '@chakra-ui/react'
  * Setting Page Section
  */
 
-const settings = () => {
+function settings() {
   return (
     <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#DFE0EB">
       <Center>
