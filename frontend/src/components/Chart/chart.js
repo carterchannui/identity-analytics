@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -7,8 +8,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { Box, Heading, Text, Image, Spacer } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  Heading,
+  Text,
+  Image,
+  Spacer,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 import arrow from '../../assets/Arrow_drop_down_big.webp';
+
+import { useRecoilState } from 'recoil';
+import { graphData } from '../Atom/atom';
 
 const pdata = [
   {
@@ -49,6 +64,10 @@ const pdata = [
   },
 ];
 
+function onClick() {
+  console.log('clicked');
+}
+
 function Chart() {
   const date = new Date();
   return (
@@ -60,7 +79,7 @@ function Chart() {
             as of {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
           </Heading>
         </Box>
-        
+
         <Box display={'flex'} gap={'20px'}>
           <Box display={'flex'} gap={'5px'}>
             <Box>
@@ -88,7 +107,19 @@ function Chart() {
             </Box>
             <Spacer w="5vh" />
             <Box>
-              <Image src={arrow} alt="" />
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  colorScheme="white"
+                  rightIcon={<Image onClick={onClick} src={arrow} alt="" />}
+                ></MenuButton>
+                <MenuList>
+                  <MenuItem>Passes Issued</MenuItem>
+                  <MenuItem>Passes Refreshed</MenuItem>
+                  <MenuItem>Unique Interactions</MenuItem>
+                  <MenuItem>Active Passes</MenuItem>
+                </MenuList>
+              </Menu>
             </Box>
           </Box>
         </Box>

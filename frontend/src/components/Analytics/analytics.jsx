@@ -1,16 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Flex, Spacer, StatLabel, Stat,
   StatNumber, Center, Button,
   Text } from '@chakra-ui/react'
 import '../Analytics/analytics.css';
 import Chart from "../Chart/chart";
-
+import { useRecoilState } from 'recoil';
+import { dataState1, dataState2, dataState3, dataState4 } from '../Atom/atom'
 /*
  * Analytics Page Section 
  * Consisted of a topbar and a card
  */
 
-function analytics () {
+
+function Analytics () {
+
+  const [data1, setData1] = useRecoilState(dataState1);
+  const [data2, setData2] = useRecoilState(dataState2);
+  const [data3, setData3] = useRecoilState(dataState3);
+  const [data4, setData4] = useRecoilState(dataState4);
+
+   useEffect(() => {
+     setData1(sessionStorage.getItem('passes_issued'))
+   }, ['passes_issued']);
+
+   useEffect(() => {
+    setData2(sessionStorage.getItem('passes_refreshed'))
+  }, ['passes_refreshed']);
+
+  
+
   return (
     <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#DFE0EB">
       <Center>
@@ -33,28 +51,28 @@ function analytics () {
                     <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> 39,021 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> {data1} </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> 113,049 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> {data2} </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> 1,542 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> {data3} </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> 14,042 </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> {data4} </StatNumber>
                         </Stat>
                     </Box>
                 </Flex>
@@ -69,7 +87,7 @@ function analytics () {
   )
 }
 
-export default analytics
+export default Analytics
 
 
 function collectData(event) {

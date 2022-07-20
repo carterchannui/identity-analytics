@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar/sidebar';
 import Home from './components/Home/home';
 import Analytics from './components/Analytics/analytics';
 import Settings from './components/Settings/settings';
+import { RecoilRoot } from 'recoil';
 
 /*
  * Create Conatainer with a horizontal flex layout that has the Sidebar and the main section.
@@ -25,12 +26,14 @@ function App() {
     <ChakraProvider theme={theme}>
       <Router>
         <Flex minH="100vh">
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
+          <RecoilRoot>
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </RecoilRoot>
         </Flex>
       </Router>
     </ChakraProvider>
