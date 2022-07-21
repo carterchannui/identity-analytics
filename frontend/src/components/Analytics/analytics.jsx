@@ -1,45 +1,109 @@
 import React from 'react'
-import { Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
-import Card from '../Card/card';
+import { Box, Flex, Spacer, Center, Button, Text, VStack, Grid, GridItem, Wrap, WrapItem} from '@chakra-ui/react'
 import '../Analytics/analytics.css';
-/*
- * Analytics Page Section 
- * Consisted of a topbar and a card
- */
+import StatBox from  "../Analytics/statbox";
+import Topbar from '../Topbar/topbar'
+import Chart from '../Chart/chart';
 
-const analytics = () => {
-  return (
-    <Flex direction='column' bg='#F8F8F8' h='auto' w='auto' color='white' >
-        <Topbar/>
-        <Card/>
-    </Flex>
-  )
-}
 
-/*
- * Topbar component
- */
+export default function Analytics() {
+    return (
 
-const Topbar = () => {
-  return (
-      <Flex align="center">
-          <Center>
-                  <Text textColor="#0057A5" fontWeight="700" fontSize="35px" ml="32px" mt="38" mb="41">
-                      Analytics
-                  </Text>
-          </Center>
-          <Spacer/> 
-          <Center>
-          <Button onClick={loadFile} id="get_file" colorScheme='blue' size='lg'>
-                    <Text>
-                        Upload CSV
-                    </Text>
-                </Button>
-                <input type="file" id="input_file"/>
-          </Center>
-      </Flex>
+        <VStack w='100%' h='100%' align='left' mx='16' my='8'>
+            <Topbar title='Analytics'/>
+            <Flex 
+                bg='#FFFFFF' 
+                h='100%' 
+                w='100%'
+                p='4' 
+                m='8' 
+                borderRadius="10px"
+                border='2px'
+                borderColor='#A3A4AB'
+                direction='column'
+            >
+                    <Flex align='center' w='100%'>
+                            <StatBox label='Passes Issued' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Passes Refreshed' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Unique Interactions' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Active Passes' data={20000}/>
+                    </Flex>
+            </Flex>
+            <Flex 
+                bg='#FFFFFF' 
+                h='100%' 
+                w='100%'
+                p='4' 
+                m='8' 
+                borderRadius="10px"
+                border='2px'
+                borderColor='#A3A4AB'
+                direction='column'
+            >
+                <Flex direction='column'>
+                    {/* Data Visual Goes Here */}
+                    <Chart/>
+                </Flex>
+            </Flex>
+
+            
+        </VStack>
+
+        /*
+        <Flex w='100%' h='100%'>
+            <Grid
+                templateAreas={
+                        `"header"
+                          "main"
+                          "footer"`
+                }
+                gridTemplateRows={'100% 100%'}
+                gridTemplateColumns={'100%'}
+                w='100%'
+                h='100%'
+                color='blackAlpha.700'
+
+            >
+                <GridItem bg='orange.300' area={'header'}>
+                    <Flex>
+                    <Topbar title='Analytics'/>
+                    <Spacer/>
+                    <Box bg='green.300'> Test TESST </Box>
+                    </Flex>
+                </GridItem>
+                <GridItem bg='green.300' area={'main'}>
+                    <Flex 
+                        bg='#FFFFFF' 
+                        h='100%' 
+                        p='4' 
+                        m='8' 
+                        borderRadius="10px"
+                        border='2px'
+                        borderColor='#A3A4AB'
+                    >
+                            <Flex w='100%'>
+                                <StatBox label='Passes Issued' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Passes Refreshed' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Unique Interactions' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Active Passes' data={20000}/>
+                            </Flex>
+                    </Flex>
+                </GridItem>
+                <GridItem bg='blue.300' area={'footer'}>
+                    Footer
+                </GridItem>
+            </Grid>
+        </Flex>
+            */
   );
 }
+
 
 function collectData(event) {
   // console.log(event.target.result);
@@ -57,12 +121,17 @@ function collectData(event) {
       }
       ++actions;
   });
-  // console.log(passes_issued);
-  // console.log(passes_refreshed);
-  // console.log(actions);
+   console.log(passes_issued);
+   console.log(passes_refreshed);
+   console.log(actions);
   localStorage.setItem('passes_issued', passes_issued);
   localStorage.setItem('passes_refreshed', passes_refreshed);
   localStorage.setItem('total_actions', actions);
+  
+   // Store data locally.
+   sessionStorage.setItem('passes_issued', passes_issued);
+   sessionStorage.setItem('passes_refreshed', passes_refreshed);
+   sessionStorage.setItem('total_actions', actions);
 }
 
 function loadFile() {
@@ -99,5 +168,3 @@ return data
     );
   });
 };
-
-export default analytics
