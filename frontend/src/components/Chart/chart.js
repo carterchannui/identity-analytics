@@ -22,54 +22,19 @@ import {
 } from '@chakra-ui/react';
 import arrow from '../../assets/Arrow_drop_down_big.webp';
 
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { graphData } from '../Atom/atom';
-
-const pdata = [
-  {
-    name: 'Jan',
-    data: 500,
-    key: 200,
-    refreshment: 200,
-  },
-  {
-    name: 'Feb',
-    data: 400,
-    key: 450,
-    refreshment: 300,
-  },
-  {
-    name: 'Mar',
-    data: 300,
-    key: 200,
-    refreshment: 150,
-  },
-  {
-    name: 'Apr',
-    data: 200,
-    key: 500,
-    refreshment: 350,
-  },
-  {
-    name: 'Jun',
-    data: 100,
-    key: 100,
-    refreshment: 250,
-  },
-  {
-    name: 'Jul',
-    data: 0,
-    key: 300,
-    refreshment: 450,
-  },
-];
 
 function onClick() {
   console.log('clicked');
+  window.location.reload();
 }
 
 function Chart() {
   const date = new Date();
+
+  const [graphData1] = useRecoilState(graphData);
+
   return (
     <>
       <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
@@ -111,13 +76,13 @@ function Chart() {
                 <MenuButton
                   as={Button}
                   colorScheme="white"
-                  rightIcon={<Image onClick={onClick} src={arrow} alt="" />}
+                  rightIcon={<Image src={arrow} alt="" />}
                 ></MenuButton>
                 <MenuList>
-                  <MenuItem>Passes Issued</MenuItem>
-                  <MenuItem>Passes Refreshed</MenuItem>
-                  <MenuItem>Unique Interactions</MenuItem>
-                  <MenuItem>Active Passes</MenuItem>
+                  <MenuItem onClick={onClick}>Passes Issued</MenuItem>
+                  <MenuItem onClick={onClick}>Passes Refreshed</MenuItem>
+                  <MenuItem onClick={onClick}>Unique Interactions</MenuItem>
+                  <MenuItem onClick={onClick}>Active Passes</MenuItem>
                 </MenuList>
               </Menu>
             </Box>
@@ -127,7 +92,7 @@ function Chart() {
 
       <ResponsiveContainer width="100%" aspect={3}>
         <LineChart
-          data={pdata}
+          data={graphData1}
           width={500}
           height={250}
           margin={{ top: 5, right: 20, left: 20, bottom: 5 }}

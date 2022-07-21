@@ -22,5 +22,42 @@ export const dataState4 = atom({
 
 export const graphData = atom({
   key: 'graphData',
-  default: '0',
+  default: [
+    {
+      name: 'Jan',
+      data: 500,
+      key: 200,
+      refreshment: 200,
+    },
+    {
+      name: 'Feb',
+      data: 400,
+      key: 450,
+      refreshment: 300,
+    },
+    {
+      name: 'Mar',
+      data: 300,
+      key: 200,
+      refreshment: 150,
+    },
+    {
+      name: 'Apr',
+      data: 200,
+      key: 500,
+      refreshment: 350,
+    },
+    {
+      name: 'Jun',
+      data: 100,
+      key: 100,
+      refreshment: 250,
+    },
+    {
+      name: 'Jul',
+      data: 0,
+      key: 300,
+      refreshment: 450,
+    },
+  ],
 });

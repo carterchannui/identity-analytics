@@ -4,8 +4,9 @@ import { Box, Flex, Spacer, StatLabel, Stat,
   Text } from '@chakra-ui/react'
 import '../Analytics/analytics.css';
 import Chart from "../Chart/chart";
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { dataState1, dataState2, dataState3, dataState4 } from '../Atom/atom'
+import CountUp from 'react-countup';
 /*
  * Analytics Page Section 
  * Consisted of a topbar and a card
@@ -21,23 +22,27 @@ function Analytics () {
 
    useEffect(() => {
      setData1(sessionStorage.getItem('passes_issued'))
-   }, ['passes_issued']);
+   },[setData1]);
 
    useEffect(() => {
     setData2(sessionStorage.getItem('passes_refreshed'))
-  }, ['passes_refreshed']);
+  },[setData2]);
 
-  
 
   return (
-    <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#DFE0EB">
+    <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#E7E7E7">
       <Center>
         <Text textColor="#0057A5" fontSize="35px" fontWeight="bold" ml="38px" mt="41px">
           Analytics
         </Text>
         <Spacer/>
         <Box mt="40px" mr="30px">
-          <Button onClick={loadFile} id="get_file" colorScheme='blue' size='lg'>
+          <Button onClick={() => {
+          loadFile();
+          setTimeout(() => {
+            window.location.reload(false);
+        }, 5000)
+        }} id="get_file" colorScheme='blue' size='lg' >
                     <Text>
                         Import CSV
                     </Text>
@@ -46,33 +51,33 @@ function Analytics () {
           </Box>
       </Center>
     <Flex bg='#FFFFFF'  borderRadius="10px" ml="32px" mt="32px" mr="32px">
-            <Box w='100%' border="1px"  borderRadius="10px"boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" >
+            <Box w='100%' border="1px" borderRadius="10px"boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" >
                 <Flex>
                     <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> {data1} </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data1} /> </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> {data2} </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data2} /> </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> {data3} </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data3} /> </StatNumber>
                         </Stat>
                     </Box>
                     <Spacer/>
                     <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
                         <Stat>
                             <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> {data4} </StatNumber>
+                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data4} /> </StatNumber>
                         </Stat>
                     </Box>
                 </Flex>
