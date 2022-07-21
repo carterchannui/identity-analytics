@@ -17,7 +17,6 @@ import {
     StatGroup,
 
 } from '@chakra-ui/react'
-import LabelCard from "../../components/Analytics/labelCard"
 import Chart from "../../components/Chart/chart";
 import Sidebar from "../../components/Sidebar/sidebar"
 

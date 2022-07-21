@@ -23,7 +23,7 @@ import './sidebar.css';
 const sidebar = () => {
     return (
 
-            <VStack overflow="hidden" w="100px" bg='#0057A5'>
+            <VStack overflow="hidden" minW="100px" bg='#0057A5'>
                 <Box pt='5' cursor={"pointer"}>
                     <Image src={Logo} alt='Logo' />
                 </Box>

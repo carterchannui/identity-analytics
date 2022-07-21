@@ -1,56 +1,108 @@
 import React from 'react'
-import { Box, Flex, Spacer, Center, Button, Text } from '@chakra-ui/react'
+import { Box, Flex, Spacer, Center, Button, Text, VStack, Grid, GridItem, Wrap, WrapItem} from '@chakra-ui/react'
 import '../Analytics/analytics.css';
-import Chart from "../Chart/chart";
-import LabelCard from "./labelCard"
-import {ResponsiveContainer, LineChart, Line} from "recharts";
-
-/*
- * Analytics Page Section 
- * Consisted of a topbar and a card
- */
-
-const analytics = () => {
-  return (
-    <Flex direction='column' bg='#F8F8F8' h='auto' w='auto' color='white' >
-        <Flex align="center">
-          <Center>
-                  <Text textColor="#0057A5" fontWeight="700" fontSize="35px" ml="32px" mt="38" mb="41">
-                      Analytics
-                  </Text>
-          </Center>
-          <Spacer/> 
-          <Center>
-          <Button onClick={loadFile} id="get_file" colorScheme='blue' size='lg'>
-                    <Text>
-                        Upload CSV
-                    </Text>
-                </Button>
-                <input type="file" id="input_file"/>
-          </Center>
-      </Flex>
-      <Flex w="100%">
-    <Box bg='#FFFFFF' h={{ base: '75vh', md: '75vh', lg: '85vh' }} w={{ base: '75vh', md: '130vh', lg: '180vh' }} color={"black"}  ml="32px" mr ="32px" mb="62px" boxShadow="0px 4px 20px rgba(133, 133, 133, 0.25)" borderRadius="10px">
+import StatBox from  "../Analytics/statbox";
+import Topbar from '../Topbar/topbar'
+import Chart from '../Chart/chart';
 
 
-        <Box display={"flex"} justifyContent={"space-between"} ml="32px" mr ="32px" mt ="32px">
-            <LabelCard name={"Passes Issued"} data={"39,021"}/>
-            <LabelCard name={"Passes Refreshed"} data={"113,049"}/>
-            <LabelCard name={"Unique Interactions"} data={"1,542"}/>
-            <LabelCard name={"Active Passes"} data={"14,042"}/>
-        </Box>
+export default function Analytics() {
+    return (
 
-        <Box marginTop={"2rem"}>
-            <Chart/>
+        <VStack w='100%' h='100%' align='left' mx='16' my='8'>
+            <Topbar title='Analytics'/>
+            <Flex 
+                bg='#FFFFFF' 
+                h='100%' 
+                w='100%'
+                p='4' 
+                m='8' 
+                borderRadius="10px"
+                border='2px'
+                borderColor='#A3A4AB'
+                direction='column'
+            >
+                    <Flex align='center' w='100%'>
+                            <StatBox label='Passes Issued' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Passes Refreshed' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Unique Interactions' data={20000}/>
+                            <Spacer/>
+                            <StatBox label='Active Passes' data={20000}/>
+                    </Flex>
+            </Flex>
+            <Flex 
+                bg='#FFFFFF' 
+                h='100%' 
+                w='100%'
+                p='4' 
+                m='8' 
+                borderRadius="10px"
+                border='2px'
+                borderColor='#A3A4AB'
+                direction='column'
+            >
+                <Flex direction='column'>
+                    {/* Data Visual Goes Here */}
+                    <Chart/>
+                </Flex>
+            </Flex>
 
-        </Box>
-    </Box>
-    </Flex>
-    </Flex>
-  )
+            
+        </VStack>
+
+        /*
+        <Flex w='100%' h='100%'>
+            <Grid
+                templateAreas={
+                        `"header"
+                          "main"
+                          "footer"`
+                }
+                gridTemplateRows={'100% 100%'}
+                gridTemplateColumns={'100%'}
+                w='100%'
+                h='100%'
+                color='blackAlpha.700'
+
+            >
+                <GridItem bg='orange.300' area={'header'}>
+                    <Flex>
+                    <Topbar title='Analytics'/>
+                    <Spacer/>
+                    <Box bg='green.300'> Test TESST </Box>
+                    </Flex>
+                </GridItem>
+                <GridItem bg='green.300' area={'main'}>
+                    <Flex 
+                        bg='#FFFFFF' 
+                        h='100%' 
+                        p='4' 
+                        m='8' 
+                        borderRadius="10px"
+                        border='2px'
+                        borderColor='#A3A4AB'
+                    >
+                            <Flex w='100%'>
+                                <StatBox label='Passes Issued' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Passes Refreshed' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Unique Interactions' data={20000}/>
+                                <Spacer/>
+                                <StatBox label='Active Passes' data={20000}/>
+                            </Flex>
+                    </Flex>
+                </GridItem>
+                <GridItem bg='blue.300' area={'footer'}>
+                    Footer
+                </GridItem>
+            </Grid>
+        </Flex>
+            */
+  );
 }
-
-export default analytics
 
 
 function collectData(event) {

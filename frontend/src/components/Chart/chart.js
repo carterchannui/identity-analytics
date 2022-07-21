@@ -49,13 +49,12 @@ const pdata = [
   },
 ];
 
-function Chart() {
+export default function Chart() {
   return (
     <>
       <Box display={'flex'} justifyContent={'space-between'} width={'80%'}>
-        <Box ml={'3rem'}>
+        <Box m={'4'}>
           <Heading size="md">Gateway Activity</Heading>
-          <img src={arrow} alt="" />
         </Box>
 
         <Box display={'flex'} gap={'20px'}>
@@ -123,4 +122,3 @@ function Chart() {
   );
 }
 
-export default Chart;
