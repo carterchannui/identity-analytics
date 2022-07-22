@@ -34,7 +34,7 @@ export default function StatBox(props) {
             <Center>
                 <Box py="4">
                     <Heading size="2xl" fontWeight="600">
-                        {parseInt(props.data).toLocaleString()}
+                    <CountUp end={props.data} separator="," duration={2} />
                     </Heading>
                 </Box>
             </Center>
