@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "recharts": "^2.1.12",
     "recoil": "^0.7.4",
+    "use-count-up": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

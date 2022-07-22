@@ -1,13 +1,7 @@
 import React from 'react';
 import {
     Box,
-    Flex,
-    Spacer,
-    Stat,
-    StatLabel,
-    StatNumber,
     Center,
-    Text,
     Heading,
 } from '@chakra-ui/react';
 
@@ -41,7 +35,7 @@ export default function StatBox(props) {
                         <Heading size='2xl'
                         fontWeight='600'
                         > 
-                        {parseInt(props.data).toLocaleString()}
+                            <CountUp end={props.data} separator="," />
                         </Heading>
                     </Box>
                 </Center>
