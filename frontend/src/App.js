@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider, theme, Flex } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme, Flex } from '@chakra-ui/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar/sidebar';
@@ -21,11 +21,18 @@ import { RecoilRoot } from 'recoil';
  * Uses ChakraProvider to set the theme.
  */
 
+const theme = extendTheme({
+  fonts: {
+    heading: `Work Sans, sans-serif`,
+    body: `Work Sans, sans-serif`,
+  },
+});
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <Router>
-        <Flex minH="100vh">
+        <Flex minH="100vh" bg="#E7E7E7">
           <RecoilRoot>
             <Sidebar />
             <Routes>

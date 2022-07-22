@@ -1,160 +1,63 @@
 import React, { useEffect } from 'react'
-import { Box, Flex, Spacer, StatLabel, Stat,
-  StatNumber, Center, Button,
-  Text } from '@chakra-ui/react'
+import {
+  VStack, Box, Flex, Spacer, StatLabel, Stat,
+  StatNumber, Center
+} from '@chakra-ui/react'
 import '../Analytics/analytics.css';
-import Chart from "../Chart/chart";
+import Chart from '../Chart/chart';
+import Topbar from '../Topbar/topbar';
+import ImportButton from './importButton';
+import StatBox from './statbox';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { dataState1, dataState2, dataState3, dataState4 } from '../Atom/atom'
-import CountUp from 'react-countup';
-/*
- * Analytics Page Section 
- * Consisted of a topbar and a card
- */
 
+export default function Analytics() {
+    const [data1, setData1] = useRecoilState(dataState1);
+    const [data2, setData2] = useRecoilState(dataState2);
+    const [data3, setData3] = useRecoilState(dataState3);
+    const [data4, setData4] = useRecoilState(dataState4);
 
-function Analytics () {
+    useEffect(() => {
+    setData1(sessionStorage.getItem('passes_issued'))
+    }, [setData1]);
 
-  const [data1, setData1] = useRecoilState(dataState1);
-  const [data2, setData2] = useRecoilState(dataState2);
-  const [data3, setData3] = useRecoilState(dataState3);
-  const [data4, setData4] = useRecoilState(dataState4);
-
-   useEffect(() => {
-     setData1(sessionStorage.getItem('passes_issued'))
-   },[setData1]);
-
-   useEffect(() => {
+    useEffect(() => {
     setData2(sessionStorage.getItem('passes_refreshed'))
-  },[setData2]);
+    }, [setData2]);
 
 
-  return (
-    <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#E7E7E7">
-      <Center>
-        <Text textColor="#0057A5" fontSize="35px" fontWeight="bold" ml="38px" mt="41px">
-          Analytics
-        </Text>
-        <Spacer/>
-        <Box mt="40px" mr="30px">
-          <Button onClick={() => {
-          loadFile();
-          setTimeout(() => {
-            window.location.reload(false);
-        }, 5000)
-        }} id="get_file" colorScheme='blue' size='lg' >
-                    <Text>
-                        Import CSV
-                    </Text>
-                </Button>
-                <input type="file" id="input_file"/>
-          </Box>
-      </Center>
-    <Flex bg='#FFFFFF'  borderRadius="10px" ml="32px" mt="32px" mr="32px">
-            <Box w='100%' border="1px" borderRadius="10px"boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" >
-                <Flex>
-                    <Box bg='#FFFFFF' px='8' py='4' ml="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Issued </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data1} /> </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Passes Refreshed </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data2} /> </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Unique Interactions </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data3} /> </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' mr="10" mt="20px" borderRadius="10px" border="1px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel color={"#0057A5"} fontWeight={"bold"} fontSize={"16px"}> Active Passes </StatLabel>
-                            <StatNumber align="center" fontWeight={"bold"}> <CountUp end={data4} /> </StatNumber>
-                        </Stat>
-                    </Box>
-                </Flex>
-                <Box p={8} borderRadius="10px" boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);" m={10}>
-                    <Chart/>
-                    
-                </Box>
+    return (
+    <VStack w='100%' h='100%' align='left' mx='16' my='8'>
+        <Flex align='center'>
+            <Topbar title='Analytics' />
+            <Spacer />
+            <ImportButton />
+        </Flex>
+        <Flex
+        bg='#FFFFFF'
+        borderRadius='10px'
+        border='2px'
+        borderColor='#A3A4AB'
+        direction='column'
+        h='100%'
+        w='100%'
+        p='4'
+        m='8'
+        >
+            <Flex align='center' w='100%'>
+                <StatBox label='Passes Issued' data={data1} />
+                <Spacer />
+                <StatBox label='Passes Refreshed' data={data2} />
+                <Spacer />
+                <StatBox label='Unique Interactions' data={data3} />
+                <Spacer />
+                <StatBox label='Active Passes' data={data4} />
+            </Flex>
+            <Box p={8} border='1px' borderRadius='10px' boxShadow='0px 4px 4px 0px rgba(0,0,0,0.30);' m={10}>
+                <Chart />
             </Box>
-      </Flex>
-          
-    </Flex>
+        </Flex>
+    </VStack>
   )
 }
 
-export default Analytics
-
-
-function collectData(event) {
-  // console.log(event.target.result);
-  let json = convert(event.target.result);
-  let passes_issued = 0;
-  let passes_refreshed = 0;
-  let actions = 0;
-
-  json.forEach(item => {
-      if (item.instruction_name === "IssueVanilla") {
-          passes_issued++;
-      } else {
-          // Assumes item.instruction_name === UpdateExpiry.
-          passes_refreshed++;
-      }
-      ++actions;
-  });
-   console.log(passes_issued);
-   console.log(passes_refreshed);
-   console.log(actions);
-  localStorage.setItem('passes_issued', passes_issued);
-  localStorage.setItem('passes_refreshed', passes_refreshed);
-  localStorage.setItem('total_actions', actions);
-  
-   // Store data locally.
-   sessionStorage.setItem('passes_issued', passes_issued);
-   sessionStorage.setItem('passes_refreshed', passes_refreshed);
-   sessionStorage.setItem('total_actions', actions);
-}
-
-function loadFile() {
-  document.getElementById('input_file').click();
-  const input = document.querySelector('input');
-
-  input.onchange = () => {
-      if (input.files.length === 0) {
-          console.log("No file selected for upload.");
-      } else {
-          const selectedFile = input.files[0];
-          console.log(`Loaded ${selectedFile.name}`);
-          let reader = new FileReader();
-
-          reader.onload = collectData;
-
-          reader.readAsText(selectedFile);
-
-      }
-  }
-}
-
-const convert = (data, delimiter = ',') => {
-const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
-return data
-  .slice(data.indexOf('\n') + 1)
-  .split('\n')
-  .map(v => {
-    const values = v.split(delimiter);
-    return titles.reduce(
-      // eslint-disable-next-line
-      (obj, title, index) => ((obj[title] = values[index]), obj),
-      {}
-    );
-  });
-};
