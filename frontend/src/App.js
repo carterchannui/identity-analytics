@@ -13,12 +13,6 @@ import Analytics from './components/Analytics/analytics';
 import Settings from './components/Settings/settings';
 import { RecoilRoot } from 'recoil';
 
-const theme = extendTheme({
-  fonts: {
-    heading: `'Work Sans', sans-serif`,
-    body: `'Work Sans', sans-serif`,
-  },
-})
 
 const theme = extendTheme({
   fonts: {
