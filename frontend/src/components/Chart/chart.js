@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -7,56 +8,44 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  Heading,
+  Text,
+  Image,
+  Spacer,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 import arrow from '../../assets/Arrow_drop_down_big.webp';
 
-const pdata = [
-  {
-    name: 'Jan',
-    data: 500,
-    key: 200,
-    refreshment: 200,
-  },
-  {
-    name: 'Feb',
-    data: 400,
-    key: 450,
-    refreshment: 300,
-  },
-  {
-    name: 'Mar',
-    data: 300,
-    key: 200,
-    refreshment: 150,
-  },
-  {
-    name: 'Apr',
-    data: 200,
-    key: 500,
-    refreshment: 350,
-  },
-  {
-    name: 'Jun',
-    data: 100,
-    key: 100,
-    refreshment: 250,
-  },
-  {
-    name: 'Jul',
-    data: 0,
-    key: 300,
-    refreshment: 450,
-  },
-];
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { graphData } from '../Atom/atom';
+
+function onClick() {
+  console.log('clicked');
+  window.location.reload();
+}
 
 export default function Chart() {
+  const date = new Date();
+
+  const [graphData1] = useRecoilState(graphData);
+
   return (
     <>
-      <Box display={'flex'} justifyContent={'space-between'} width={'80%'}>
-        <Box m={'4'}>
-          <Heading size="md">Gateway Activity</Heading>
+      <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
+        <Box ml={'3rem'}>
+          <Heading size="md">
+            Gateway Activity
+          </Heading>
+          <Heading mt="10px" mb="10px" size="sm" textColor="#9FA2B4">
+            as of {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
+          </Heading>
         </Box>
-
         <Box display={'flex'} gap={'20px'}>
           <Box display={'flex'} gap={'5px'}>
             <Box>
@@ -64,7 +53,7 @@ export default function Chart() {
                 border={'2px solid blue'}
                 width="2rem"
                 display="inline-block"
-              ></Box>
+              />
             </Box>
             <Box>
               <Text>Issuance</Text>
@@ -82,16 +71,32 @@ export default function Chart() {
             <Box>
               <Text>Refreshment</Text>
             </Box>
+            <Spacer w="5vh" />
+            <Box>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  colorScheme="white"
+                  rightIcon={<Image src={arrow} alt="" />}
+                ></MenuButton>
+                <MenuList>
+                  <MenuItem onClick={onClick}>Passes Issued</MenuItem>
+                  <MenuItem onClick={onClick}>Passes Refreshed</MenuItem>
+                  <MenuItem onClick={onClick}>Unique Interactions</MenuItem>
+                  <MenuItem onClick={onClick}>Active Passes</MenuItem>
+                </MenuList>
+              </Menu>
+            </Box>
           </Box>
         </Box>
       </Box>
 
       <ResponsiveContainer width="100%" aspect={3}>
         <LineChart
-          data={pdata}
+          data={graphData1}
           width={500}
           height={250}
-          margin={{ top: 5, right: 300, left: 20, bottom: 5 }}
+          margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
         >
           {/*<Line type="monotone" dataKey="data" stroke="blue" activeDot={{ r: 8 }} />*/}
           <Line

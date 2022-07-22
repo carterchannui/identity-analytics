@@ -1,20 +1,7 @@
 import React from 'react'
-import { 
-    Flex,
-    Box,
-    Center,
-    Button,
-    Text,
-    Heading,
-    Spacer,
-    Grid,
-    GridItem,
-    Stat,
-    StatLabel,
-    StatNumber,
-    StatHelpText,
-    StatArrow,
-    StatGroup,
+
+import { Flex, Box, Center, Button, Text, Spacer,loadFile } from '@chakra-ui/react'
+
 
 } from '@chakra-ui/react'
 import Chart from "../../components/Chart/chart";
@@ -25,44 +12,17 @@ import Sidebar from "../../components/Sidebar/sidebar"
  * Consisted of a topbar and a card
  */
 
-const home = () => {
+function home() {
   return (
-        <Flex h='100%' w="100%" bg='#E7E7E7' p='4' m='8' borderRadius="10px">
-            <Box w='100%'>
-                <Flex>
-                    <Box bg='#FFFFFF' px='8' py='4' borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel> Passes Issued </StatLabel>
-                            <StatNumber> 40,000 </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel> Passes Issued </StatLabel>
-                            <StatNumber> 40,000 </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel> Passes Issued </StatLabel>
-                            <StatNumber> 40,000 </StatNumber>
-                        </Stat>
-                    </Box>
-                    <Spacer/>
-                    <Box bg='#FFFFFF' px='8' py='4' borderRadius="10px" boxShadow="-1px 7px 5px 1px rgba(0,0,0,0.30);">
-                        <Stat>
-                            <StatLabel> Passes Issued </StatLabel>
-                            <StatNumber> 40,000 </StatNumber>
-                        </Stat>
-                    </Box>
-                </Flex>
-                <Box p='8'>
-                    <Chart/>
-                </Box>
-            </Box>
-    </Flex>
+    <Flex h='100vh' w="100%" direction="column" align="left" justify="top" background ="#E7E7E7">
+      <Center>
+        <Text textColor="#0057A5" fontSize="35px" fontWeight="bold" ml="38px" mt="41px">
+          Home
+        </Text>
+        <Spacer/>
+        
+      </Center>
+      </Flex>
   )
 }
 
