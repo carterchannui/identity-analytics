@@ -30,7 +30,7 @@ function onClick() {
   window.location.reload();
 }
 
-function Chart() {
+export default function Chart() {
   const date = new Date();
 
   const [graphData1] = useRecoilState(graphData);
@@ -39,12 +39,13 @@ function Chart() {
     <>
       <Box display={'flex'} justifyContent={'space-between'} width={'100%'}>
         <Box ml={'3rem'}>
-          <Heading size="md">Gateway Activity</Heading>
+          <Heading size="md">
+            Gateway Activity
+          </Heading>
           <Heading mt="10px" mb="10px" size="sm" textColor="#9FA2B4">
             as of {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
           </Heading>
         </Box>
-
         <Box display={'flex'} gap={'20px'}>
           <Box display={'flex'} gap={'5px'}>
             <Box>
@@ -126,4 +127,3 @@ function Chart() {
   );
 }
 
-export default Chart;

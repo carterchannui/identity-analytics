@@ -1,7 +1,11 @@
 import React from 'react'
+
 import { Flex, Box, Center, Button, Text, Spacer,loadFile } from '@chakra-ui/react'
 
 
+} from '@chakra-ui/react'
+import Chart from "../../components/Chart/chart";
+import Sidebar from "../../components/Sidebar/sidebar"
 
 /*
  * Home Page Section

@@ -4,6 +4,8 @@ import {
     Box,
     Link,
     VStack,
+    Spacer,
+    Center,
 } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { Image } from '@chakra-ui/react';
