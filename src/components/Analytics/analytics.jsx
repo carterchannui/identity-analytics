@@ -15,21 +15,14 @@ import Topbar from "../Topbar/topbar";
 import ImportButton from "./importButton";
 import StatBox from "./statbox";
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
-import { dataState1, dataState2, dataState3, dataState4 } from "../Atom/atom";
+import { passesIssued, passesRefreshed, uniqueInteractions, activePasses } from "../Atom/atom";
 
 export default function Analytics() {
-    const [data1, setData1] = useRecoilState(dataState1);
-    const [data2, setData2] = useRecoilState(dataState2);
-    const [data3, setData3] = useRecoilState(dataState3);
-    const [data4, setData4] = useRecoilState(dataState4);
 
-    useEffect(() => {
-        setData1(sessionStorage.getItem("passes_issued"));
-    }, [setData1]);
-
-    useEffect(() => {
-        setData2(sessionStorage.getItem("passes_refreshed"));
-    }, [setData2]);
+    const passes_issued = useRecoilValue(passesIssued);
+    const passes_refreshed = useRecoilValue(passesRefreshed);
+    const unique_interactions = useRecoilValue(uniqueInteractions);
+    const active_passes = useRecoilValue(activePasses);
 
     return (
         <VStack w="100%" h="100%" align="left" mx="16" my="8">
@@ -50,13 +43,13 @@ export default function Analytics() {
                 m="8"
             >
                 <Flex align="center" w="100%">
-                    <StatBox label="Passes Issued" data={data1} />
+                    <StatBox label="Passes Issued" data={passes_issued} />
                     <Spacer />
-                    <StatBox label="Passes Refreshed" data={data2} />
+                    <StatBox label="Passes Refreshed" data={passes_refreshed} />
                     <Spacer />
-                    <StatBox label="Unique Interactions" data={data3} />
+                    <StatBox label="Unique Interactions" data={unique_interactions} />
                     <Spacer />
-                    <StatBox label="Active Passes" data={data4} />
+                    <StatBox label="Active Passes" data={active_passes} />
                 </Flex>
                 <Box
                     p={8}
