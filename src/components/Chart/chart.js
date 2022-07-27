@@ -22,8 +22,8 @@ import {
 } from "@chakra-ui/react";
 import arrow from "../../assets/Arrow_drop_down_big.webp";
 
-import { useRecoilState, useRecoilValue } from "recoil";
-import { graphData } from "../Atom/atom";
+import { useRecoilState } from "recoil";
+import { passesIssuedData } from "../Atom/atom";
 
 function onClick() {
     console.log("clicked");
@@ -33,10 +33,17 @@ function onClick() {
 export default function Chart() {
     const date = new Date();
 
-    const [graphData1] = useRecoilState(graphData);
+    const [passesIssuedData1] = useRecoilState(passesIssuedData);
 
     return (
-        <>
+        <Box
+            p={8}
+            border="2px"
+            borderColor="#A3A4AB"
+            borderRadius="10px"
+            boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);"
+            m={10}
+        >
             <Box
                 display={"flex"}
                 justifyContent={"space-between"}
@@ -104,7 +111,7 @@ export default function Chart() {
 
             <ResponsiveContainer width="100%" aspect={3}>
                 <LineChart
-                    data={graphData1}
+                    data={passesIssuedData1}
                     width={500}
                     height={250}
                     margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
@@ -139,6 +146,6 @@ export default function Chart() {
                     {/*<Legend />*/}
                 </LineChart>
             </ResponsiveContainer>
-        </>
+        </Box>
     );
 }

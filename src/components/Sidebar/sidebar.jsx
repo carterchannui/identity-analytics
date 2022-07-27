@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Link, VStack, Spacer, Center } from "@chakra-ui/react";
+import { Box, Link, VStack } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 import AnalyticsIcon from "../../assets/Analytics.png";
@@ -15,8 +15,8 @@ import "./sidebar.css";
 
 function sidebar() {
     return (
-        <VStack overflow="hidden" w="100px" bg="#0057A5">
-            <Box pt="5" cursor={"pointer"}>
+        <VStack w="100px" bg="#0057A5" h="100vh">
+            <Box pt="5">
                 <Image src={Logo} alt="Logo" />
             </Box>
             <Box py="6" className={"sideIcon"}>

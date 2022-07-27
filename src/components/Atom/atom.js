@@ -1,27 +1,27 @@
 import { atom } from "recoil";
 
-export const dataState1 = atom({
-    key: "dataState1",
+export const passesIssued = atom({
+    key: "passesIssued",
     default: 0,
 });
 
-export const dataState2 = atom({
-    key: "dataState2",
+export const passesRefreshed = atom({
+    key: "passesRefreshed",
     default: 0,
 });
 
-export const dataState3 = atom({
-    key: "dataState3",
+export const uniqueInteractions = atom({
+    key: "uniqueInteractions",
     default: 0,
 });
 
-export const dataState4 = atom({
-    key: "dataState4",
+export const activePasses = atom({
+    key: "activePasses",
     default: 0,
 });
 
-export const graphData = atom({
-    key: "graphData",
+export const passesIssuedData = atom({
+    key: "passesIssuedData",
     default: [
         {
             name: "Jan",

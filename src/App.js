@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ChakraProvider, extendTheme, Flex } from "@chakra-ui/react";
+import { Box, ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -18,13 +18,19 @@ const theme = extendTheme({
         heading: `Work Sans, sans-serif`,
         body: `Work Sans, sans-serif`,
     },
+    breakpoints: {
+        sm: "30em",
+        md: "48em",
+        lg: "62em",
+        xl: "80em",
+    },
 });
 
 function App() {
     return (
         <ChakraProvider theme={theme}>
             <Router>
-                <Flex minH="100vh" bg="#E7E7E7">
+                <Box display="flex" bg="#E7E7E7">
                     <RecoilRoot>
                         <Sidebar />
                         <Routes>
@@ -33,7 +39,7 @@ function App() {
                             <Route path="/settings" element={<Settings />} />
                         </Routes>
                     </RecoilRoot>
-                </Flex>
+                </Box>
             </Router>
         </ChakraProvider>
     );
