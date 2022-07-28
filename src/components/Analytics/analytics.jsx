@@ -12,7 +12,7 @@ import StatBox from "./statbox";
 // Analytics page
 export default function Analytics() {
     return (
-        <VStack w="95%" h="100%" align="left" mx="16" my="8">
+        <VStack w="95%" h="100%" align="left" mx="16" my="8" data-testid="analytics">
             <Box  display={"flex"} justifyContent={"center"} alignItems={"center"} w={"95%"}>
                 <Topbar title="Analytics" />
                 <Spacer />

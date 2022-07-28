@@ -71,7 +71,9 @@ export default function ImportButton() {
     };
 
     return (
-        <Box>
+        <Box
+        data-testid="importButton"
+        >
             <Button
                 onClick={() => {
                     loadFile();

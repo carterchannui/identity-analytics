@@ -33,6 +33,7 @@ export default function Chart() {
 
     return (
         <Box
+        data-testid="chart"
             // p={8}
             border="2px"
             borderColor="#A3A4AB"

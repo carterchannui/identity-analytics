@@ -13,7 +13,7 @@ import {
 export default function Topbar(props) {
     return (
         <Flex m="8">
-            <Heading color="#0057A5">{props.title}</Heading>
+            <Heading data-testid="topbar" color="#0057A5">{props.title}</Heading>
             <Spacer />
         </Flex>
     );

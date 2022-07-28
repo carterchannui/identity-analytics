@@ -11,7 +11,7 @@ import "./sidebar.css";
 //The Sidebar
 export default function sidebar() {
     return (
-        <VStack minW="100px" bg="#0057A5" minH="100%">
+        <VStack data-testid="sidebar" minW="100px" bg="#0057A5" minH="100%">
             <Box pt="5">
                 <Image src={Logo} alt="Logo" />
             </Box>

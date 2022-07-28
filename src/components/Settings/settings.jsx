@@ -11,9 +11,11 @@ export default function settings() {
             align="left"
             justify="top"
             background="#E7E7E7"
+           
         >
             <Center>
                 <Text
+                    data-testid="settings"
                     textColor="#0057A5"
                     fontSize="35px"
                     fontWeight="bold"

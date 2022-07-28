@@ -22,6 +22,7 @@ export default function home() {
         >
             <Center>
                 <Text
+                    data-testid="home"
                     textColor="#0057A5"
                     fontSize="35px"
                     fontWeight="bold"

@@ -23,7 +23,7 @@ export default function StatBox() {
     const active_passes = useRecoilValue(activeGatekeepers);
 
     return (
-        <div className="statbox" >
+        <div className="statbox" data-testid="statbox">
 
         <Box className={"box box1"}  minH="70" bg='#FFFFFF'  py='4'  mt='20px' border="2px"
                 borderColor="#A3A4AB" borderRadius='10px'  boxShadow='0px 4px 4px 0px rgba(0,0,0,0.30);'>
