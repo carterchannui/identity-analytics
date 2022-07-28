@@ -1,0 +1,4 @@
+/* hides the input file button under the customed button */
+#input_file {
+    display: none;
+}

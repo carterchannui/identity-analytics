@@ -13,6 +13,7 @@ import Analytics from "./components/Analytics/analytics";
 import Settings from "./components/Settings/settings";
 import { RecoilRoot } from "recoil";
 
+//chakra UI custom theme
 const theme = extendTheme({
     fonts: {
         heading: `Work Sans, sans-serif`,
@@ -25,15 +26,21 @@ const theme = extendTheme({
         xl: "80em",
     },
 });
-
-function App() {
+//entry point for the app
+export default function App() {
     return (
         <ChakraProvider theme={theme}>
+            {" "}
+            {/*chakra UI theme*/}
             <Router>
-                <Box display="flex" bg="#E7E7E7">
+                <Box display="flex" backgroundColor={"#E7E7E7"} minH="100vh">
                     <RecoilRoot>
+                        {" "}
+                        {/*recoil global state set up*/}
                         <Sidebar />
                         <Routes>
+                            {" "}
+                            {/*react-router*/}
                             <Route path="/" element={<Home />} />
                             <Route path="/analytics" element={<Analytics />} />
                             <Route path="/settings" element={<Settings />} />
@@ -44,5 +51,3 @@ function App() {
         </ChakraProvider>
     );
 }
-
-export default App;

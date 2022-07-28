@@ -4,8 +4,12 @@ import {
     Spacer,
     Heading,
 } from "@chakra-ui/react";
-import "../Analytics/analytics.css";
 
+
+/**
+ * The Sidebar
+ * @param {String} props.title - The title of the page
+ */
 export default function Topbar(props) {
     return (
         <Flex m="8">

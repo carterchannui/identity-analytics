@@ -1,24 +1,51 @@
+// Implementing Recoil State Management Library (Recoil) for global state management in React
+// Atom is wrapper for state management.
 import { atom } from "recoil";
+
+/**
+ * Recoil global state value to dynamically update the state of the passesIssued.
+ * @param passesIssued (Number) The initial value for the PassesIssued.
+ */
 
 export const passesIssued = atom({
     key: "passesIssued",
     default: 0,
 });
 
+/**
+ * Recoil global state value to dynamically update the state of the passesRefreshed.
+ * @param passesRefreshed (Number) The initial value for the PassesRefreshed.
+ */
+
 export const passesRefreshed = atom({
     key: "passesRefreshed",
     default: 0,
 });
+
+/**
+ * Recoil global state value to dynamically update the state of the uniqueInteractions.
+ * @param uniqueInteractions (Number) The initial value for the uniqueInteractions.
+ */
 
 export const uniqueInteractions = atom({
     key: "uniqueInteractions",
     default: 0,
 });
 
-export const activePasses = atom({
-    key: "activePasses",
+/**
+ * Recoil global state value to dynamically update the state of the activeGatekeepers.
+ * @param activeGatekeepers (Number) The initial value for the activeGatekeepers.
+ */
+
+export const activeGatekeepers = atom({
+    key: "activeGatekeepers",
     default: 0,
 });
+
+/**
+ * Recoil global state value to dynamically update the state of the passesIssuedData.
+ * @param passesIssuedData (String) The specific data for graph.
+ */
 
 export const passesIssuedData = atom({
     key: "passesIssuedData",

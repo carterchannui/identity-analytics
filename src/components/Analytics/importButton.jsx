@@ -1,7 +1,9 @@
 import React from "react";
 import { Text, Box, Button } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
-import { passesIssued, passesRefreshed, uniqueInteractions, activePasses } from "../Atom/atom";
+import { passesIssued, passesRefreshed, uniqueInteractions, activeGatekeepers } from "../Atom/atom";
+import "./importButton.css";
+
 
 export default function ImportButton() {
     const setPassesIssued = useSetRecoilState(passesIssued);
