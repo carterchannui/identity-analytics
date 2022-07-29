@@ -28,16 +28,13 @@ const theme = extendTheme({
 export default function App() {
     return (
         <ChakraProvider theme={theme}>
-            {" "}
             {/*chakra UI theme*/}
             <Router>
                 <Box display="flex" backgroundColor={"#E7E7E7"} minH="100vh">
                     <RecoilRoot>
-                        {" "}
                         {/*recoil global state set up*/}
                         <Sidebar />
                         <Routes>
-                            {" "}
                             {/*react-router*/}
                             <Route path="/" element={<Home />} />
                             <Route path="/analytics" element={<Analytics />} />

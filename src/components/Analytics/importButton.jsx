@@ -2,7 +2,7 @@
 import React from "react";
 import Papa from "papaparse";
 import { Text, Box, Button } from "@chakra-ui/react";
-import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import {
     passesIssued,
     passesRefreshed,
@@ -10,6 +10,7 @@ import {
     activeGatekeepers,
     graphData,
 } from "../Atom/atom";
+import "./importButton.css";
 
 export default function ImportButton() {
     const setPassesIssued = useSetRecoilState(passesIssued);

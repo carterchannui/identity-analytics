@@ -42,16 +42,17 @@ export default function StatBox() {
         </Box>
         <Spacer/>
         <Box className={"box box3"} minH="70" bg='#FFFFFF'  px='8' py='4' mt='20px' borderRadius='10px' border="2px" borderColor="#A3A4AB" boxShadow='0px 4px 4px 0px rgba(0,0,0,0.30);'>
-            <Stat>
-                <StatLabel color={'#0057A5'} fontWeight={'bold'} fontSize={'20px'} align='center'> Unique Interaction </StatLabel>
-                <StatNumber align='center'fontSize="4xl" fontWeight={'bold'}> <CountUp end={unique_interactions} separator="," duration={2} /> </StatNumber>
+             <Stat>
+                <StatLabel color={'#0057A5'} fontWeight={'bold'} fontSize={'20px'} align='center'> Active Gatekeepers </StatLabel>
+                <StatNumber align='center' fontSize="4xl" fontWeight={'bold'}> <CountUp end={active_passes} separator="," duration={2} /></StatNumber>
             </Stat>
         </Box>
         <Spacer/>
         <Box className={"box box4"}  minH="70" bg='#FFFFFF'  px='8' py='4' mr={"6"}  mt='20px'  borderRadius='10px' border="2px" borderColor="#A3A4AB" boxShadow='0px 4px 4px 0px rgba(0,0,0,0.30);'>
+            
             <Stat>
-                <StatLabel color={'#0057A5'} fontWeight={'bold'} fontSize={'20px'} align='center'> Active Gatekeepers </StatLabel>
-                <StatNumber align='center' fontSize="4xl" fontWeight={'bold'}> <CountUp end={active_passes} separator="," duration={2} /></StatNumber>
+                <StatLabel color={'#0057A5'} fontWeight={'bold'} fontSize={'20px'} align='center'> Placeholder </StatLabel>
+                <StatNumber align='center'fontSize="4xl" fontWeight={'bold'}> <CountUp end={unique_interactions} separator="," duration={2} /> </StatNumber>
             </Stat>
         </Box>
 
