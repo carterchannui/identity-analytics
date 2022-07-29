@@ -1,7 +1,5 @@
 import React from "react";
-
-import { Box, ChakraProvider, extendTheme } from "@chakra-ui/react";
-
+import { ChakraProvider, extendTheme, Flex, Box } from "@chakra-ui/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "@fontsource/work-sans/700.css";

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { passesIssued, passesRefreshed, uniqueInteractions, activeGatekeepers } from "../Atom/atom";
-
+import { MetroSpinner } from "react-spinners-kit";
 import CountUp from "react-countup";
 import "./statbox.css";
 // Statbox that displays the number of passes issued, passes refreshed, unique interactions, and active gatekeepers
@@ -21,6 +21,7 @@ export default function StatBox() {
     const passes_refreshed = useRecoilValue(passesRefreshed);
     const unique_interactions = useRecoilValue(uniqueInteractions);
     const active_passes = useRecoilValue(activeGatekeepers);
+
 
     return (
         <div className="statbox" data-testid="statbox">

@@ -1,74 +1,123 @@
+// Carter Chan-Nui - Intern
 import React from "react";
+import Papa from "papaparse";
 import { Text, Box, Button } from "@chakra-ui/react";
-import { useSetRecoilState } from "recoil";
-import { passesIssued, passesRefreshed, uniqueInteractions, activeGatekeepers } from "../Atom/atom";
-import "./importButton.css";
-
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import {
+    passesIssued,
+    passesRefreshed,
+    uniqueInteractions,
+    activeGatekeepers,
+    graphData,
+} from "../Atom/atom";
 
 export default function ImportButton() {
     const setPassesIssued = useSetRecoilState(passesIssued);
     const setPassesRefreshed = useSetRecoilState(passesRefreshed);
-    
-    function collectData(event) {
-        // Convert CSV to JSON.
-        let json = convert(event.target.result);
-        let passes_issued = 0;
-        let passes_refreshed = 0;
+    const setActiveGatekeepers = useSetRecoilState(activeGatekeepers);
+    const setGraphData = useSetRecoilState(graphData);
+    const graphDataState = useRecoilValue(graphData);
+
+    function initJSON() {
+        // Allocate space for current months.
+        let year = new Array(new Date().getMonth() + 1);
+        // Initialize each index in array with month JSON object.
+        for (let i = 0; i < year.length; i++) {
+            let date = new Date();
+            date.setMonth(i);
+            // Add month JSON object to array.
+            year[i] = {
+                month: `${date.toLocaleString("en-US", { month: "short" })}`,
+                issued: 0,
+                refreshed: 0,
+            };
+        }
+        return year;
+    }
+
+    function processTransaction(item, year, counts) {
+        // Extract month.
+        let month = item.timestamp.split(" ")[0].split("/")[0];
+        // Restrict active data to [Jan, <Current Month>].
+        if (month <= year.length) {
+            if (item.instruction_name === "IssueVanilla") {
+                // Update number of issued passes for respective month.
+                year[month - 1].issued = year[month - 1].issued + 1;
+                // Update total issued gateway passes.
+                counts[0] = counts[0] + 1;
+            } else if (item.instruction_name === "UpdateExpiry") {
+                // Update number of refreshed passes for respective month.
+                year[month - 1].refreshed = year[month - 1].refreshed + 1;
+                // Update total refreshed gateway passes.
+                counts[1] = counts[1] + 1;
+            }
+        }
+    }
+
+    function collectData(results) {
+        // Initialize new graph data JSON object.
+        let year = initJSON();
+        // Track gatekeepers and their activity, <gatekeeper_address, frequency>.
+        let gatekeepers = new Map();
+        // Track action counts, [issued, refreshed].
+        let counts = [0, 0];
+        // Track total gateway pass transactions.
         let actions = 0;
 
-        json.forEach((item) => {
-            if (item.instruction_name === "IssueVanilla") {
-                passes_issued++;
+        // Iterate through array of JSON objects.
+        for (let item of results.data) {
+            // Update gatekeeper tracker.
+            if (gatekeepers.has(item.gatekeeper_address)) {
+                gatekeepers.set(
+                    item.gatekeeper_address,
+                    gatekeepers.get(item.gatekeeper_address) + 1
+                );
             } else {
-                // Assumes item.instruction_name === UpdateExpiry.
-                passes_refreshed++;
+                gatekeepers.set(item.gatekeeper_address, 1);
             }
+            processTransaction(item, year, counts);
             ++actions;
-        });
+        }
 
         // Store data locally.
-        sessionStorage.setItem("passes_issued", passes_issued);
-        sessionStorage.setItem("passes_refreshed", passes_refreshed);
-        sessionStorage.setItem("total_actions", actions);
+        localStorage.setItem("passes_issued", counts[0]);
+        localStorage.setItem("passes_refreshed", counts[1]);
+        localStorage.setItem("total_actions", actions);
+        localStorage.setItem("active_gatekeepers", gatekeepers.size);
+        localStorage.setItem("graphData", year);
 
         // Update respective Atoms.
-        setPassesIssued(passes_issued);
-        setPassesRefreshed(passes_refreshed);
+        setPassesIssued(counts[0]);
+        setPassesRefreshed(counts[1]);
+        setActiveGatekeepers(gatekeepers.size);
+        setGraphData(year);
     }
 
     function loadFile() {
         document.getElementById("input_file").click();
         const input = document.querySelector("input");
 
+        // CSV->JSON parser configuration.
+        let config = {
+            header: true,
+            complete: function (results, file) {
+                console.log("Parsing complete:", results, file);
+                collectData(results);
+            },
+        };
+
+        // Validate file picker input.
         input.onchange = () => {
             if (input.files.length === 0) {
                 console.log("No file selected for upload.");
             } else {
                 const selectedFile = input.files[0];
                 console.log(`Loaded ${selectedFile.name}`);
-                let reader = new FileReader();
-
-                reader.onload = collectData;
-
-                reader.readAsText(selectedFile);
+                // Parse input file.
+                Papa.parse(selectedFile, config);
             }
         };
     }
-
-    const convert = (data, delimiter = ",") => {
-        const titles = data.slice(0, data.indexOf("\n")).split(delimiter);
-        return data
-            .slice(data.indexOf("\n") + 1)
-            .split("\n")
-            .map((v) => {
-                const values = v.split(delimiter);
-                return titles.reduce(
-                    // eslint-disable-next-line
-                    (obj, title, index) => ((obj[title] = values[index]), obj),
-                    {}
-                );
-            });
-    };
 
     return (
         <Box
