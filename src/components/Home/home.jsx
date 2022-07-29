@@ -31,7 +31,7 @@ export default function Home() {
             className={"chart"}
         >
             <WelcomePanel/> {/* WelcomePanel component that displays the welcome message to the user */}
-            <Globe height={1000} width={1000} backgroundColor="#FFFFFF" globeImageUrl="https://assets.vercel.com/image/upload/v1595320886/front/home/globe-texture.jpg"/> 
+            <Globe height={1000} width={800} backgroundColor="#FFFFFF" globeImageUrl="https://assets.vercel.com/image/upload/v1595320886/front/home/globe-texture.jpg"/> 
             
             {/* Globe component that displays the globe */}
         </Flex>
