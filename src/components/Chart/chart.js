@@ -118,7 +118,7 @@ export default function Chart() {
                     <CartesianGrid strokeDasharray="3 3" />
                     {/*XAxis is used to render the x-axis*/}
                     <XAxis
-                        dataKey="name"
+                        dataKey="month"
                         interval={"preserveStartEnd"}
                         tickFormatter={(value) => value}
                     />
