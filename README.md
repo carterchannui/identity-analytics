@@ -2,7 +2,7 @@
 
 Identity Analytics UI
 
-An application used to filter data form Twitter based on user preference, built with React, Recoil, JavaScript, and CSS.
+An application used to anlayze the gateway token usage, built with React, Recoil, JavaScript, and CSS.
 
 ## Project Status
 
