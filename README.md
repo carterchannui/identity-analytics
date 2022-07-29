@@ -10,7 +10,7 @@ This project is currently in development.
 
 ## Project Screen Shot(s)
 
-<img width="2560" alt="Screen Shot 2022-07-28 at 9 29 21 PM" src="https://user-images.githubusercontent.com/35953676/181683042-97561acf-f986-4ac1-b05a-f76d491e5a6e.png">
+<img width="2560" alt="Screen Shot 2022-07-28 at 9 29 08 PM" src="https://user-images.githubusercontent.com/35953676/181683690-3afcddd1-b6c9-421a-8769-63c863f972a8.png">
 <img width="2560" alt="Screen Shot 2022-07-28 at 9 30 18 PM" src="https://user-images.githubusercontent.com/35953676/181683114-f8c02b99-87d7-45e2-b085-11c6615e8ac0.png">
 
 ## Installation and Setup Instructions
