@@ -13,11 +13,13 @@
         "chakra-ui-file-picker": "^0.2.0",
         "fast-csv": "^4.3.6",
         "framer-motion": "^6.4.3",
+        "papaparse": "^5.3.2",
         "react": "^18.2.0",
         "react-countup": "^6.3.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",
+        "react-spinners-kit": "^1.9.1",
         "recharts": "^2.1.12",
         "recoil": "^0.7.4",
         "web-vitals": "^2.1.4"

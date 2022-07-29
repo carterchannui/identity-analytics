@@ -27,7 +27,6 @@ import { graphData } from "../Atom/atom";
 
 function onClick() {
     console.log("clicked");
-    window.location.reload();
 }
 
 export default function Chart() {
@@ -109,27 +108,25 @@ export default function Chart() {
                     height={250}
                     margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 >
-                    {/*<Line type="monotone" dataKey="data" stroke="blue" activeDot={{ r: 8 }} />*/}
                     <Line
                         type="monotone"
-                        dataKey="key"
+                        dataKey="issued"
                         stroke="blue"
                         activeDot={{ r: 8 }}
                     />
                     <Line
                         type="monotone"
-                        dataKey="refreshment"
+                        dataKey="refreshed"
                         stroke="grey"
                         activeDot={{ r: 8 }}
                     />
-                    {/*<Line type="monotone" dataKey="name" stroke="blue" activeDot={{ r: 8 }} />*/}
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                         dataKey="name"
                         interval={"preserveStartEnd"}
                         tickFormatter={(value) => value}
                     />
-                    <YAxis dataKey={"data"} />
+                    <YAxis />
                     <Tooltip
                         contentStyle={{
                             backgroundColor: "blue",

@@ -15,14 +15,18 @@ import Topbar from "../Topbar/topbar";
 import ImportButton from "./importButton";
 import StatBox from "./statbox";
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
-import { passesIssued, passesRefreshed, uniqueInteractions, activePasses } from "../Atom/atom";
+import {
+    passesIssued,
+    passesRefreshed,
+    uniqueInteractions,
+    activeGatekeepers,
+} from "../Atom/atom";
 
 export default function Analytics() {
-
     const passes_issued = useRecoilValue(passesIssued);
     const passes_refreshed = useRecoilValue(passesRefreshed);
     const unique_interactions = useRecoilValue(uniqueInteractions);
-    const active_passes = useRecoilValue(activePasses);
+    const active_gatekeepers = useRecoilValue(activeGatekeepers);
 
     return (
         <VStack w="100%" h="100%" align="left" mx="16" my="8">
@@ -47,9 +51,15 @@ export default function Analytics() {
                     <Spacer />
                     <StatBox label="Passes Refreshed" data={passes_refreshed} />
                     <Spacer />
-                    <StatBox label="Unique Interactions" data={unique_interactions} />
+                    <StatBox
+                        label="Unique Interactions"
+                        data={unique_interactions}
+                    />
                     <Spacer />
-                    <StatBox label="Active Passes" data={active_passes} />
+                    <StatBox
+                        label="Active Gatekeepers"
+                        data={active_gatekeepers}
+                    />
                 </Flex>
                 <Box
                     p={8}

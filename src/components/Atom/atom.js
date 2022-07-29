@@ -2,12 +2,12 @@ import { atom } from "recoil";
 
 export const passesIssued = atom({
     key: "passesIssued",
-    default: 0,
+    default: localStorage.getItem("passes_issued") || 0,
 });
 
 export const passesRefreshed = atom({
     key: "passesRefreshed",
-    default: 0,
+    default: localStorage.getItem("passes_refreshed") || 0,
 });
 
 export const uniqueInteractions = atom({
@@ -15,49 +15,73 @@ export const uniqueInteractions = atom({
     default: 0,
 });
 
-export const activePasses = atom({
-    key: "activePasses",
-    default: 0,
+export const activeGatekeepers = atom({
+    key: "activeGatekeepers",
+    default: localStorage.getItem("active_gatekeepers") || 0,
 });
 
 export const graphData = atom({
     key: "graphData",
     default: [
         {
-            name: "Jan",
-            data: 500,
-            key: 200,
-            refreshment: 200,
+            month: "Jan",
+            issued: 0,
+            refreshed: 0,
         },
         {
-            name: "Feb",
-            data: 400,
-            key: 450,
-            refreshment: 300,
+            month: "Feb",
+            issued: 0,
+            refreshed: 0,
         },
         {
-            name: "Mar",
-            data: 300,
-            key: 200,
-            refreshment: 150,
+            month: "Mar",
+            issued: 0,
+            refreshed: 0,
         },
         {
-            name: "Apr",
-            data: 200,
-            key: 500,
-            refreshment: 350,
+            month: "Apr",
+            issued: 0,
+            refreshed: 0,
         },
         {
-            name: "Jun",
-            data: 100,
-            key: 100,
-            refreshment: 250,
+            month: "May",
+            issued: 0,
+            refreshed: 0,
         },
         {
-            name: "Jul",
-            data: 0,
-            key: 300,
-            refreshment: 450,
+            month: "Jun",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Jul",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Aug",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Sep",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Oct",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Nov",
+            issued: 0,
+            refreshed: 0,
+        },
+        {
+            month: "Dec",
+            issued: 0,
+            refreshed: 0,
         },
     ],
 });

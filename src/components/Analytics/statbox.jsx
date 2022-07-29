@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import CountUp from "react-countup";
+import { MetroSpinner } from "react-spinners-kit";
 
 export default function StatBox(props) {
     return (
