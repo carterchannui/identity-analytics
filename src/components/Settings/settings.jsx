@@ -1,10 +1,8 @@
 import React from "react";
 import { Flex, Center, Text, Spacer } from "@chakra-ui/react";
-/*
- * Setting Page Section
- */
 
-function settings() {
+// settings page
+export default function settings() {
     return (
         <Flex
             h="100vh"
@@ -13,9 +11,11 @@ function settings() {
             align="left"
             justify="top"
             background="#E7E7E7"
+           
         >
             <Center>
                 <Text
+                    data-testid="settings"
                     textColor="#0057A5"
                     fontSize="35px"
                     fontWeight="bold"
@@ -29,5 +29,3 @@ function settings() {
         </Flex>
     );
 }
-
-export default settings;

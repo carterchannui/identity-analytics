@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Link, VStack, Spacer, Center } from "@chakra-ui/react";
+import { Box, Link, VStack } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 import AnalyticsIcon from "../../assets/Analytics.png";
@@ -8,31 +8,27 @@ import SettingIcon from "../../assets/setting.png";
 import Logo from "../../assets/Logo.png";
 import "./sidebar.css";
 
-/*
- * Sidebar component
- * uses React Router Link
- */
-
-function sidebar() {
+//The Sidebar
+export default function sidebar() {
     return (
-        <VStack overflow="hidden" w="100px" bg="#0057A5">
-            <Box pt="5" cursor={"pointer"}>
+        <VStack data-testid="sidebar" minW="100px" bg="#0057A5" minH="100%">
+            <Box pt="5">
                 <Image src={Logo} alt="Logo" />
             </Box>
             <Box py="6" className={"sideIcon"}>
-                <Link as={ReactLink} to="/">
+                <Link as={ReactLink} to="/"> {/* React Link is used to link to a page to Home */}
                     {" "}
                     <Image src={HomeIcon} alt="Home" />
                 </Link>
             </Box>
             <Box py="6" className={"sideIcon"}>
-                <Link as={ReactLink} to="/analytics">
+                <Link as={ReactLink} to="/analytics"> {/* React Link is used to link to a page to Analytics */}
                     {" "}
                     <Image src={AnalyticsIcon} alt="Analytics" />{" "}
                 </Link>
             </Box>
             <Box py="6" className={"sideIcon"}>
-                <Link as={ReactLink} to="/settings">
+                <Link as={ReactLink} to="/settings"> {/* React Link is used to link to a page to Settings */}
                     {" "}
                     <Image src={SettingIcon} alt="Settings" />{" "}
                 </Link>
@@ -41,4 +37,3 @@ function sidebar() {
     );
 }
 
-export default sidebar;

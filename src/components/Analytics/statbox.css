@@ -1,0 +1,49 @@
+/* adds responsive styling to the statbox component */
+
+.statbox{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.box{
+    flex: 250px;
+    margin: 0 1rem;
+}
+
+/* media query for large size */
+@media (max-width: 1200px){
+
+    .statbox{
+        flex-wrap: wrap;
+    }
+    .box1{
+        flex-grow: 4;
+    }
+
+    .box2{
+        flex-grow: 4;
+
+    }
+    .box3{
+        flex-grow: 4;
+    }
+    .box4{
+        flex-grow: 4;
+    }
+
+}
+/* media query for medium size */
+@media (min-width: 830px){
+    .box{
+        flex-basis: 40%;
+    }
+}
+/* media query for small size */
+@media (min-width: 425px) and (max-width: 700px) {
+    .box{
+        flex-basis: 100%;
+    }
+
+}

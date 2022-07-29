@@ -1,43 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     VStack,
-    Box,
     Flex,
-    Spacer,
-    StatLabel,
-    Stat,
-    StatNumber,
-    Center,
+    Spacer, Box,
 } from "@chakra-ui/react";
-import "../Analytics/analytics.css";
 import Chart from "../Chart/chart";
 import Topbar from "../Topbar/topbar";
 import ImportButton from "./importButton";
 import StatBox from "./statbox";
-import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
-import { dataState1, dataState2, dataState3, dataState4 } from "../Atom/atom";
 
+// Analytics page
 export default function Analytics() {
-    const [data1, setData1] = useRecoilState(dataState1);
-    const [data2, setData2] = useRecoilState(dataState2);
-    const [data3, setData3] = useRecoilState(dataState3);
-    const [data4, setData4] = useRecoilState(dataState4);
-
-    useEffect(() => {
-        setData1(sessionStorage.getItem("passes_issued"));
-    }, [setData1]);
-
-    useEffect(() => {
-        setData2(sessionStorage.getItem("passes_refreshed"));
-    }, [setData2]);
-
     return (
-        <VStack w="100%" h="100%" align="left" mx="16" my="8">
-            <Flex align="center">
+        <VStack w="95%" h="100%" align="left" mx="16" my="8" data-testid="analytics">
+            <Box  display={"flex"} justifyContent={"center"} alignItems={"center"} w={"95%"}>
                 <Topbar title="Analytics" />
                 <Spacer />
-                <ImportButton />
-            </Flex>
+                <ImportButton  /> {/* Import Button Component that will be used to import csv data from a file and format and parse to JSON object */}
+            </Box>
             <Flex
                 bg="#FFFFFF"
                 borderRadius="10px"
@@ -45,29 +25,17 @@ export default function Analytics() {
                 borderColor="#A3A4AB"
                 direction="column"
                 h="100%"
-                w="100%"
+                w={"95%"}
                 p="4"
                 m="8"
+                className={"chart"}
             >
-                <Flex align="center" w="100%">
-                    <StatBox label="Passes Issued" data={data1} />
-                    <Spacer />
-                    <StatBox label="Passes Refreshed" data={data2} />
-                    <Spacer />
-                    <StatBox label="Unique Interactions" data={data3} />
-                    <Spacer />
-                    <StatBox label="Active Passes" data={data4} />
-                </Flex>
-                <Box
-                    p={8}
-                    border="1px"
-                    borderRadius="10px"
-                    boxShadow="0px 4px 4px 0px rgba(0,0,0,0.30);"
-                    m={10}
-                >
-                    <Chart />
-                </Box>
+                <StatBox/> {/* StatBox component that displays the number of passes issued, passes refreshed, unique interactions, and active gatekeepers */}
+                <Chart /> {/* Chart componnent that displays the data of the passes issued as a graph using recharts */}
             </Flex>
         </VStack>
     );
 }
+
+
+
