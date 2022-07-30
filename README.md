@@ -23,7 +23,7 @@ Installation:
 
 To Run Test Suite:  
 
-`npm test`  
+`npm test`, then press, `a`  
 
 To Start Server:
 

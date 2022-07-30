@@ -17,8 +17,7 @@ export default function ImportButton() {
     const setPassesRefreshed = useSetRecoilState(passesRefreshed);
     const setActiveGatekeepers = useSetRecoilState(activeGatekeepers);
     const setGraphData = useSetRecoilState(graphData);
-    const graphDataState = useRecoilValue(graphData);
-
+    
     function initJSON() {
         // Allocate space for current months.
         let year = new Array(new Date().getMonth() + 1);

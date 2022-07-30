@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import {
     Flex,
     Spacer,
@@ -12,6 +12,15 @@ import WelcomePanel from "./welcomePanel";
 
 // Home page
 export default function Home() {
+    const globeEl = useRef();
+
+    useEffect(() => {
+        // Auto-rotate
+        globeEl.current.controls().autoRotate = true;
+        globeEl.current.controls().autoRotateSpeed = 10;
+        globeEl.current.pointOfView({ altitude: 3 }, 1000);
+      }, []);
+
     return (
         <VStack w="95%" h="100%" align="left" mx="16" my="8" data-testid="home">
         <Box  display={"flex"} justifyContent={"center"} alignItems={"center"} w={"95%"}>
@@ -31,8 +40,7 @@ export default function Home() {
             className={"chart"}
         >
             <WelcomePanel/> {/* WelcomePanel component that displays the welcome message to the user */}
-            <Globe height={1000} width={800} backgroundColor="#FFFFFF" globeImageUrl="https://assets.vercel.com/image/upload/v1595320886/front/home/globe-texture.jpg"/> 
-            
+            <Globe ref={globeEl} height={1000} width={800} backgroundColor="#FFFFFF" globeImageUrl="https://assets.vercel.com/image/upload/v1595320886/front/home/globe-texture.jpg"/> 
             {/* Globe component that displays the globe */}
         </Flex>
     </VStack>

@@ -12,25 +12,15 @@ import "./sidebar.css";
 export default function sidebar() {
     return (
         <VStack data-testid="sidebar" minW="100px" bg="#0057A5" minH="100%">
-            <Box pt="5">
-                <Image src={Logo} alt="Logo" />
-            </Box>
-            <Box py="6" className={"sideIcon"}>
+            <Box pt="5" cursor={"pointer"} >
                 <Link as={ReactLink} to="/"> {/* React Link is used to link to a page to Home */}
-                    {" "}
-                    <Image src={HomeIcon} alt="Home" />
+                <Image src={Logo} alt="Logo" />
                 </Link>
             </Box>
+            
             <Box py="6" className={"sideIcon"}>
                 <Link as={ReactLink} to="/analytics"> {/* React Link is used to link to a page to Analytics */}
-                    {" "}
-                    <Image src={AnalyticsIcon} alt="Analytics" />{" "}
-                </Link>
-            </Box>
-            <Box py="6" className={"sideIcon"}>
-                <Link as={ReactLink} to="/settings"> {/* React Link is used to link to a page to Settings */}
-                    {" "}
-                    <Image src={SettingIcon} alt="Settings" />{" "}
+                    <Image src={AnalyticsIcon} alt="Analytics" />
                 </Link>
             </Box>
         </VStack>
