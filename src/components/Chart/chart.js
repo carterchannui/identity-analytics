@@ -8,7 +8,7 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
-import { Box, Heading, Text, Spacer } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Button, ButtonGroup } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
 import { graphData, displayIssued, displayRefreshed } from "../Atom/atom";
@@ -25,14 +25,15 @@ export default function Chart() {
 
     const [graphData1] = useRecoilState(graphData);
     const [display_issued, setDisplayIssued] = useRecoilState(displayIssued);
-    const [display_refreshed, setDisplayRefreshed] = useRecoilState(displayRefreshed);
+    const [display_refreshed, setDisplayRefreshed] =
+        useRecoilState(displayRefreshed);
 
     function toggleIssued() {
-        setDisplayIssued(!(display_issued));
+        setDisplayIssued(!display_issued);
     }
 
     function toggleRefreshed() {
-        setDisplayRefreshed(!(display_refreshed));
+        setDisplayRefreshed(!display_refreshed);
     }
 
     return (
@@ -55,7 +56,7 @@ export default function Chart() {
                     <Heading fontSize={{ sm: "10px", md: "14px", lg: "18px" }}>
                         Gateway Activity
                     </Heading>
-                    <Heading mt="10px" mb="10px" size="sm" textColor="#9FA2B4">
+                    <Heading mt="10px" mb="10px" size="sm" textColor="#A3A4AB">
                         {" "}
                         {/* Display Current Date  */}
                         as of {date.getDate()}/{date.getMonth()}/
@@ -63,42 +64,47 @@ export default function Chart() {
                     </Heading>
                 </Box>
                 <Box display={"flex"} gap={"20px"}>
-                    <Box display={"flex"} gap={"5px"} onClick={toggleIssued}>
-                        <Box>
-                            <Box>
-                                <Box
-                                    border={"2px solid blue"}
-                                    width="2rem"
-                                    display="inline-block"
-                                />
-                            </Box>
-                            <Text
-                                fontSize={{ sm: "8px", md: "14px", lg: "18px" }}
-                            >
-                                Issued
-                            </Text>
-                        </Box>
-                    </Box>
+                    <ButtonGroup size="sm" isAttached variant="outline">
+                        <Button
+                            borderColor="#A3A4AB"
+                            border="2px"
+                            p={5}
+                            onClick={toggleIssued}
+                            flexDirection="column"
+                            pl={10}
+                            pr={10}
+                            _hover={{ bg: "#A3A4AB", textColor: "#FFFFFF" }}
+                        >
+                            Issued
+                            <Box
+                                mt={1}
+                                border={"2px solid blue"}
+                                width="4rem"
+                                display="inline-block"
+                            />
+                        </Button>
+                        <Button
+                            borderColor="#9FA2B4"
+                            border="2px"
+                            p={5}
+                            pl={10}
+                            pr={10}
+                            onClick={toggleRefreshed}
+                            flexDirection="column"
+                            _hover={{ bg: "#A3A4AB", textColor: "#FFFFFF" }}
+                        >
+                            Refreshed
+                            <Box
+                                mt={1}
+                                border={"2px solid #097969"}
+                                width="4rem"
+                                display="inline-block"
+                            />
+                        </Button>
+                    </ButtonGroup>
+                    <Spacer w="5vh" />
 
-                    <Box display={"flex"} gap={"5px"} onClick={toggleRefreshed}>
-                        <Box>
-                            <Box>
-                                <Box
-                                    border={"2px solid grey"}
-                                    width="2rem"
-                                    display="inline-block"
-                                ></Box>
-                            </Box>
-                            <Text
-                                fontSize={{ sm: "8px", md: "14px", lg: "18px" }}
-                            >
-                                Refreshed
-                            </Text>
-                        </Box>
-                        <Spacer w="5vh" />
-
-                        {/* Dropdown component to allow the user to change the chart type */}
-                    </Box>
+                    {/* Dropdown component to allow the user to change the chart type */}
                 </Box>
             </Box>
             {/*ReponsiveContainer is used to make the graph responsive to the screen size*/}
@@ -126,7 +132,7 @@ export default function Chart() {
                         type="monotone"
                         hide={display_refreshed}
                         dataKey="refreshed"
-                        stroke="grey"
+                        stroke="#097969"
                         strokeWidth={2}
                         activeDot={{ r: 8 }}
                     />
