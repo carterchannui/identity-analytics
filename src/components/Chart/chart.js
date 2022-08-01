@@ -75,7 +75,7 @@ export default function Chart() {
                             <Text
                                 fontSize={{ sm: "8px", md: "14px", lg: "18px" }}
                             >
-                                Issuance
+                                Issued
                             </Text>
                         </Box>
                     </Box>
@@ -92,7 +92,7 @@ export default function Chart() {
                             <Text
                                 fontSize={{ sm: "8px", md: "14px", lg: "18px" }}
                             >
-                                Refreshment
+                                Refreshed
                             </Text>
                         </Box>
                         <Spacer w="5vh" />
