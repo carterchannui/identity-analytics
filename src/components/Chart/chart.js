@@ -108,6 +108,7 @@ export default function Chart() {
                     data={graphData1}
                     width={500}
                     height={250}
+                    strokeWidth={2}
                     margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 >
                     {/*Line is used to render the blue line*/}
@@ -116,7 +117,8 @@ export default function Chart() {
                         hide={display_issued}
                         type="monotone"
                         dataKey="issued"
-                        stroke="blue"
+                        stroke="#0057A5"
+                        strokeWidth={2}
                         activeDot={{ r: 8 }}
                     />
                     {/*Line is used to render the grey line*/}
@@ -125,6 +127,7 @@ export default function Chart() {
                         hide={display_refreshed}
                         dataKey="refreshed"
                         stroke="grey"
+                        strokeWidth={2}
                         activeDot={{ r: 8 }}
                     />
                     {/*CartesianGrid is used to render the grid lines*/}
@@ -141,7 +144,7 @@ export default function Chart() {
                     <Tooltip
                         contentStyle={{
                             backgroundColor: "white",
-                            color: "blue",
+                            color: "#0057A5",
                         }}
                     />
                 </LineChart>
