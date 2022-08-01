@@ -9,6 +9,7 @@ import {
     uniqueInteractions,
     activeGatekeepers,
     graphData,
+    isLoading,
 } from "../Atom/atom";
 import "./importButton.css";
 
@@ -18,6 +19,7 @@ export default function ImportButton() {
     const setActiveGatekeepers = useSetRecoilState(activeGatekeepers);
     const setGraphData = useSetRecoilState(graphData);
     const graphDataState = useRecoilValue(graphData);
+    const setIsLoading = useSetRecoilState(isLoading);
 
     function initJSON() {
         // Allocate space for current months.
@@ -25,7 +27,7 @@ export default function ImportButton() {
         // Initialize each index in array with month JSON object.
         for (let i = 0; i < year.length; i++) {
             let date = new Date();
-            date.setMonth(i);
+            date.setMonth(i, 1);
             // Add month JSON object to array.
             year[i] = {
                 month: `${date.toLocaleString("en-US", { month: "short" })}`,
@@ -87,6 +89,8 @@ export default function ImportButton() {
         localStorage.setItem("active_gatekeepers", gatekeepers.size);
         localStorage.setItem("graphData", year);
 
+        setIsLoading(false);
+
         // Update respective Atoms.
         setPassesIssued(counts[0]);
         setPassesRefreshed(counts[1]);
@@ -112,6 +116,7 @@ export default function ImportButton() {
             if (input.files.length === 0) {
                 console.log("No file selected for upload.");
             } else {
+                setIsLoading(true);
                 const selectedFile = input.files[0];
                 console.log(`Loaded ${selectedFile.name}`);
                 // Parse input file.

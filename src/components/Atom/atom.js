@@ -2,14 +2,29 @@
 // Atom is wrapper for state management.
 import { atom } from "recoil";
 
+export const isLoading = atom({
+    key: "isLoading",
+    default: false,
+});
+
+export const displayIssued = atom({
+    key: "displayIssued",
+    default: false,
+});
+
+export const displayRefreshed = atom({
+    key: "displayRefreshed",
+    default: false,
+});
+
 export const passesIssued = atom({
     key: "passesIssued",
-    default: localStorage.getItem("passes_issued") || 0,
+    default: 0,
 });
 
 export const passesRefreshed = atom({
     key: "passesRefreshed",
-    default: localStorage.getItem("passes_refreshed") || 0,
+    default: 0,
 });
 
 export const uniqueInteractions = atom({
@@ -19,7 +34,7 @@ export const uniqueInteractions = atom({
 
 export const activeGatekeepers = atom({
     key: "activeGatekeepers",
-    default: localStorage.getItem("active_gatekeepers") || 0,
+    default: 0,
 });
 
 /**

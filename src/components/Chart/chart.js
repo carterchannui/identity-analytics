@@ -11,7 +11,7 @@ import {
 import { Box, Heading, Text, Spacer } from "@chakra-ui/react";
 
 import { useRecoilState } from "recoil";
-import { graphData } from "../Atom/atom";
+import { graphData, displayIssued, displayRefreshed } from "../Atom/atom";
 
 //Chart component for displaying the data of the passes issued as a graph using recharts
 export default function Chart() {
@@ -24,6 +24,16 @@ export default function Chart() {
      */
 
     const [graphData1] = useRecoilState(graphData);
+    const [display_issued, setDisplayIssued] = useRecoilState(displayIssued);
+    const [display_refreshed, setDisplayRefreshed] = useRecoilState(displayRefreshed);
+
+    function toggleIssued() {
+        setDisplayIssued(!(display_issued));
+    }
+
+    function toggleRefreshed() {
+        setDisplayRefreshed(!(display_refreshed));
+    }
 
     return (
         <Box
@@ -53,7 +63,7 @@ export default function Chart() {
                     </Heading>
                 </Box>
                 <Box display={"flex"} gap={"20px"}>
-                    <Box display={"flex"} gap={"5px"}>
+                    <Box display={"flex"} gap={"5px"} onClick={toggleIssued}>
                         <Box>
                             <Box>
                                 <Box
@@ -70,7 +80,7 @@ export default function Chart() {
                         </Box>
                     </Box>
 
-                    <Box display={"flex"} gap={"5px"}>
+                    <Box display={"flex"} gap={"5px"} onClick={toggleRefreshed}>
                         <Box>
                             <Box>
                                 <Box
@@ -102,6 +112,8 @@ export default function Chart() {
                 >
                     {/*Line is used to render the blue line*/}
                     <Line
+                        id="issued"
+                        hide={display_issued}
                         type="monotone"
                         dataKey="issued"
                         stroke="blue"
@@ -110,6 +122,7 @@ export default function Chart() {
                     {/*Line is used to render the grey line*/}
                     <Line
                         type="monotone"
+                        hide={display_refreshed}
                         dataKey="refreshed"
                         stroke="grey"
                         activeDot={{ r: 8 }}
@@ -118,7 +131,7 @@ export default function Chart() {
                     <CartesianGrid strokeDasharray="3 3" />
                     {/*XAxis is used to render the x-axis*/}
                     <XAxis
-                        dataKey="name"
+                        dataKey="month"
                         interval={"preserveStartEnd"}
                         tickFormatter={(value) => value}
                     />
