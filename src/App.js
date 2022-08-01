@@ -23,6 +23,7 @@ const theme = extendTheme({
         xl: "80em",
     },
 });
+
 //entry point for the app
 export default function App() {
     return (
