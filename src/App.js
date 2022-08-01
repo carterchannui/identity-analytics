@@ -8,7 +8,6 @@ import "@fontsource/work-sans/400.css";
 import Sidebar from "./components/Sidebar/sidebar";
 import Home from "./components/Home/home";
 import Analytics from "./components/Analytics/analytics";
-import Settings from "./components/Settings/settings";
 import { RecoilRoot } from "recoil";
 
 //chakra UI custom theme
@@ -24,6 +23,7 @@ const theme = extendTheme({
         xl: "80em",
     },
 });
+
 //entry point for the app
 export default function App() {
     return (
@@ -38,7 +38,6 @@ export default function App() {
                             {/*react-router*/}
                             <Route path="/" element={<Home />} />
                             <Route path="/analytics" element={<Analytics />} />
-                            <Route path="/settings" element={<Settings />} />
                         </Routes>
                     </RecoilRoot>
                 </Box>
