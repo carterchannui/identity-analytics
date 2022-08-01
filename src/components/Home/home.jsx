@@ -17,7 +17,7 @@ export default function Home() {
     useEffect(() => {
         // Auto-rotate
         globeEl.current.controls().autoRotate = true;
-        globeEl.current.controls().autoRotateSpeed = 10;
+        globeEl.current.controls().autoRotateSpeed = 2;
         globeEl.current.pointOfView({ altitude: 3 }, 1000);
       }, []);
 
